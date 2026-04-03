@@ -1,0 +1,730 @@
+﻿/* ============================================
+   MAIN VARIABLES
+   ============================================ */
+:root {
+  --bg-dark: #010f15;
+  --text-white: #ffffff;
+  --text-white-90: #ffffffe6;
+  --text-gray: #787878;
+  --text-dark: #010f15;
+  --bg-light: #f5f5f5;
+  --accent-gold: #d4c5a9;
+  --font-great-vibes: "Great Vibes", cursive;
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-tenor: "Tenor Sans", sans-serif;
+  --transition: all 0.3s ease;
+}
+
+/* ============================================
+   RESET & BASE
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-montserrat);
+  background-color: var(--bg-dark);
+  color: var(--text-white);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.section-title {
+  font-family: var(--font-great-vibes);
+  font-size: 96px;
+  font-weight: 400;
+  letter-spacing: 3.84px;
+  color: var(--text-white);
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 0;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(166deg, rgba(62, 61, 56, 0) 0%, rgba(1, 15, 21, 0.95) 88%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.names-ring {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.ring-left,
+.ring-right {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 5px solid var(--text-white);
+}
+
+.ring-left {
+  transform: translateX(17px);
+}
+
+.ring-right {
+  transform: translateX(-17px);
+}
+
+.bride-name,
+.groom-name {
+  font-family: var(--font-great-vibes);
+  font-size: 145px;
+  font-weight: 400;
+  letter-spacing: 5.8px;
+  color: var(--text-white);
+  margin: 20px 0;
+}
+
+.invite-greeting {
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.4;
+  margin-bottom: 35px;
+}
+
+.invite-message {
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--text-white-90);
+  line-height: 1.4;
+}
+
+/* Wedding Date */
+.wedding-date {
+  margin-top: 80px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.date-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 57px;
+  margin-bottom: 20px;
+}
+
+.date-day,
+.date-month,
+.date-year {
+  font-family: var(--font-great-vibes);
+  font-size: 96px;
+  color: var(--text-white);
+}
+
+.date-separator {
+  width: 1px;
+  height: 80px;
+  background-color: var(--text-white);
+}
+
+.calendar-weekdays,
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+}
+
+.calendar-weekdays span,
+.calendar-days span {
+  padding: 10px;
+  font-size: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.wedding-day {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================
+   VENUE SECTION
+   ============================================ */
+.venue {
+  padding: 100px 0;
+}
+
+.venue-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 142px;
+  align-items: center;
+}
+
+.venue-title {
+  font-family: var(--font-great-vibes);
+  font-size: 96px;
+  font-weight: 400;
+  letter-spacing: 3.84px;
+  margin-bottom: 40px;
+}
+
+.venue-description {
+  font-size: 24px;
+  color: var(--text-white-90);
+  line-height: 1.4;
+  margin-bottom: 50px;
+}
+
+.venue-map-btn {
+  display: inline-block;
+  padding: 17px 30px 20px 20px;
+  border: 1px solid var(--text-white);
+  color: var(--text-white);
+  text-decoration: none;
+  font-size: 24px;
+  transition: var(--transition);
+}
+
+.venue-map-btn:hover {
+  background-color: var(--text-white);
+  color: var(--bg-dark);
+}
+
+.venue-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* ============================================
+   TIMELINE SECTION
+   ============================================ */
+.timeline {
+  position: relative;
+  padding: 100px 0;
+  background-color: var(--bg-light);
+}
+
+.timeline .section-title {
+  color: var(--text-dark);
+}
+
+.timeline-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.timeline-times {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.timeline-times .time {
+  font-family: var(--font-montserrat);
+  font-weight: 600;
+  font-size: 29px;
+  color: var(--text-dark);
+  white-space: nowrap;
+}
+
+.timeline-events {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.timeline-events .event {
+  font-size: 20px;
+  color: var(--text-dark);
+  text-align: center;
+}
+
+/* ============================================
+   DRESS CODE SECTION
+   ============================================ */
+.dress-code {
+  padding: 100px 0;
+  position: relative;
+}
+
+.dress-code-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dress-code-description {
+  font-size: 32px;
+  line-height: 1.35;
+  margin-bottom: 60px;
+  max-width: 786px;
+}
+
+.dress-code-palette,
+.dress-code-style {
+  margin-bottom: 50px;
+}
+
+.dress-code-palette h3,
+.dress-code-style h3 {
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.dress-code-palette p,
+.dress-code-style p {
+  font-size: 24px;
+  color: var(--text-white-90);
+}
+
+.palette-colors {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.color-dot {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid var(--text-white);
+}
+
+/* ============================================
+   FAQ SECTION
+   ============================================ */
+.faq {
+  padding: 100px 0;
+}
+
+.faq-list {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-top: 1px solid var(--text-white);
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 0 30px 40px;
+  cursor: pointer;
+}
+
+.faq-question span {
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.faq-toggle {
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  border: none;
+  color: var(--text-white);
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.faq-answer {
+  padding: 0 40px 40px 40px;
+  display: none;
+}
+
+.faq-answer p {
+  font-size: 24px;
+  color: var(--text-white-90);
+  line-height: 1.4;
+  max-width: 900px;
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+/* ============================================
+   RSVP FORM SECTION
+   ============================================ */
+.rsvp {
+  padding: 100px 0;
+}
+
+.rsvp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.rsvp-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.rsvp-form-wrapper {
+  background: linear-gradient(91deg, rgba(217, 217, 217, 0) 0%, rgba(238, 242, 243, 1) 100%);
+  padding: 40px;
+  border-radius: 20px;
+}
+
+.rsvp-form-wrapper .section-title {
+  color: var(--text-dark);
+  font-size: 64px;
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.form-group {
+  background-color: var(--text-white);
+  padding: 30px;
+  border-radius: 8px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"] {
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  border-bottom: 1px solid rgba(1, 15, 21, 0.3);
+  font-size: 24px;
+  font-family: var(--font-montserrat);
+  outline: none;
+}
+
+.form-group input::placeholder {
+  color: var(--text-gray);
+}
+
+.form-label {
+  display: block;
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+}
+
+.radio-group,
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.radio-label,
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+  color: var(--text-gray);
+  cursor: pointer;
+}
+
+.radio-label input,
+.checkbox-label input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.diet-note {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  border-bottom: 1px solid rgba(1, 15, 21, 0.3);
+  font-size: 24px;
+  font-family: var(--font-montserrat);
+  outline: none;
+}
+
+.submit-btn {
+  background-color: var(--bg-dark);
+  color: var(--text-white);
+  padding: 20px 30px;
+  font-size: 24px;
+  font-family: var(--font-montserrat);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.submit-btn:hover {
+  background-color: #1a3a45;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  padding: 60px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 60px;
+}
+
+.footer-content p {
+  font-size: 24px;
+  max-width: 707px;
+}
+
+.agent-name {
+  font-family: var(--font-great-vibes);
+  font-size: 96px;
+}
+
+.footer address {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  font-style: normal;
+}
+
+.footer address a {
+  color: var(--text-white);
+  text-decoration: none;
+  font-size: 24px;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 1200px) {
+  .container {
+    padding: 0 30px;
+  }
+  
+  .venue-grid {
+    gap: 60px;
+  }
+  
+  .section-title {
+    font-size: 72px;
+  }
+  
+  .bride-name,
+  .groom-name {
+    font-size: 100px;
+  }
+}
+
+@media (max-width: 992px) {
+  .venue-grid,
+  .rsvp-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .timeline-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .timeline-times {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .date-day,
+  .date-month,
+  .date-year {
+    font-size: 60px;
+  }
+  
+  .date-header {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+  
+  .section-title {
+    font-size: 48px;
+    margin-bottom: 40px;
+  }
+  
+  .bride-name,
+  .groom-name {
+    font-size: 60px;
+  }
+  
+  .invite-greeting {
+    font-size: 24px;
+  }
+  
+  .invite-message {
+    font-size: 18px;
+  }
+  
+  .venue-title {
+    font-size: 48px;
+  }
+  
+  .venue-description {
+    font-size: 18px;
+  }
+  
+  .date-day,
+  .date-month,
+  .date-year {
+    font-size: 40px;
+  }
+  
+  .date-separator {
+    height: 50px;
+  }
+  
+  .calendar-weekdays span,
+  .calendar-days span {
+    font-size: 14px;
+    padding: 5px;
+  }
+  
+  .dress-code-description {
+    font-size: 24px;
+  }
+  
+  .faq-question span {
+    font-size: 24px;
+  }
+  
+  .faq-answer p {
+    font-size: 18px;
+  }
+  
+  .agent-name {
+    font-size: 60px;
+  }
+  
+  .rsvp-form-wrapper .section-title {
+    font-size: 40px;
+  }
+  
+  .form-group {
+    padding: 20px;
+  }
+  
+  .form-label,
+  .radio-label,
+  .checkbox-label {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bride-name,
+  .groom-name {
+    font-size: 40px;
+  }
+  
+  .ring-left,
+  .ring-right {
+    width: 30px;
+    height: 30px;
+    border-width: 3px;
+  }
+  
+  .date-day,
+  .date-month,
+  .date-year {
+    font-size: 28px;
+  }
+  
+  .date-header {
+    gap: 15px;
+  }
+  
+  .date-separator {
+    height: 35px;
+  }
+  
+  .timeline-times .time {
+    font-size: 20px;
+  }
+  
+  .timeline-events .event {
+    font-size: 14px;
+  }
+  
+  .section-title {
+    font-size: 36px;
+  }
+  
+  .agent-name {
+    font-size: 40px;
+  }
+}
