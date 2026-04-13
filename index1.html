@@ -1,0 +1,618 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Свадебное приглашение | Анастасия & Артем</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- AOS анимация -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: #fef9f4;
+            color: #4a3729;
+            line-height: 1.6;
+        }
+
+        /* Кастомный скролл */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f0e4d4;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c4a27a;
+            border-radius: 4px;
+        }
+
+        /* Контейнер */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Секции */
+        .section {
+            padding: 80px 0;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-align: center;
+            color: #8b5e3c;
+            margin-bottom: 20px;
+        }
+        .divider {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c4a27a, transparent);
+            margin: 0 auto 40px;
+        }
+
+        /* Hero секция с параллаксом — новая более подходящая картинка */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(rgba(30, 20, 15, 0.4), rgba(30, 20, 15, 0.3)), url('https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center 30%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        .hero-overlay {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+        }
+        .hero-content .date-large {
+            font-size: 1.5rem;
+            letter-spacing: 6px;
+            font-weight: 300;
+        }
+        .hero-content .ampersand {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin: 0 15px;
+        }
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content .date-large { font-size: 1rem; letter-spacing: 3px; }
+            .section { padding: 50px 0; }
+            .section-title { font-size: 2rem; }
+        }
+
+        /* Таймер */
+        .timer-section {
+            background: #fff8f0;
+            padding: 30px 0;
+            border-top: 1px solid #f0e4d4;
+            border-bottom: 1px solid #f0e4d4;
+        }
+        .timer-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .timer-block {
+            text-align: center;
+            background: white;
+            padding: 15px 25px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            min-width: 100px;
+        }
+        .timer-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #8b5e3c;
+            font-family: 'Playfair Display', serif;
+        }
+        .timer-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #a08262;
+        }
+
+        /* История любви */
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .story-text p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            color: #5c4535;
+        }
+        .story-text .quote {
+            font-style: italic;
+            font-size: 1.2rem;
+            border-left: 3px solid #c4a27a;
+            padding-left: 20px;
+            margin-top: 20px;
+            color: #8b5e3c;
+        }
+        .story-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.15);
+        }
+        @media (max-width: 768px) {
+            .story-grid { grid-template-columns: 1fr; gap: 30px; }
+        }
+
+        /* Карточки мероприятий */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .event-card {
+            background: white;
+            border-radius: 24px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 1px solid #f5ede4;
+        }
+        .event-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+        }
+        .event-icon {
+            font-size: 2.5rem;
+            color: #c4a27a;
+            margin-bottom: 20px;
+        }
+        .event-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: #8b5e3c;
+        }
+        .event-time {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #a08262;
+        }
+        .event-address {
+            font-size: 0.85rem;
+            color: #7a6553;
+        }
+
+        /* Галерея — исправлено смещение, добавлено центрирование и больше фото */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            justify-items: center;
+            align-items: center;
+        }
+        .gallery-item {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+        }
+        @media (max-width: 768px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        }
+
+        /* Блок с информацией об усадьбе */
+        .venue-box {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            border: 1px solid #f0e4d4;
+        }
+        .venue-info {
+            flex: 2;
+        }
+        .venue-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #8b5e3c;
+            margin-bottom: 15px;
+        }
+        .venue-info p {
+            margin-bottom: 12px;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #5c4535;
+        }
+        .venue-info i {
+            color: #c4a27a;
+            width: 28px;
+            margin-right: 8px;
+        }
+        .venue-map {
+            flex: 1.2;
+            min-width: 200px;
+        }
+        .venue-map img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        @media (max-width: 768px) {
+            .venue-box { flex-direction: column; text-align: center; }
+            .venue-info i { margin-right: 5px; }
+        }
+
+        /* Форма RSVP */
+        .rsvp-box {
+            background: white;
+            border-radius: 30px;
+            padding: 45px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            border: 1px solid #f0e4d4;
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 14px 20px;
+            border: 1px solid #e8d9cc;
+            border-radius: 50px;
+            font-family: 'Raleway', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: #fefcf9;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #c4a27a;
+            box-shadow: 0 0 0 3px rgba(196, 162, 122, 0.1);
+        }
+        button {
+            background: linear-gradient(135deg, #8b5e3c, #a0724a);
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139, 94, 60, 0.3);
+        }
+
+        /* Подарки */
+        .gift-section {
+            background: #fff8f0;
+            text-align: center;
+        }
+        .gift-note {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1rem;
+            color: #7a6553;
+        }
+
+        /* Подвал */
+        .footer {
+            background: #2c241e;
+            color: #c4b5a5;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .footer .heart {
+            color: #c4a27a;
+        }
+
+        /* Confetti canvas */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="confetti-canvas"></canvas>
+
+<!-- Hero секция с новой картинкой (свадебная арка, цветы) -->
+<section class="hero">
+    <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
+        <p class="date-large">26 Июля 2026</p>
+        <h1>Ирина <span class="ampersand">&</span> Дмитрий</h1>
+        <p>Приглашают вас разделить с ними день любви и счастья</p>
+    </div>
+    <div class="hero-overlay">
+        <i class="fas fa-chevron-down" style="font-size: 24px; opacity: 0.7;"></i>
+    </div>
+</section>
+
+<!-- Таймер -->
+<div class="timer-section">
+    <div class="container">
+        <div class="timer-wrapper" id="timer">
+            <div class="timer-block"><div class="timer-number" id="days">00</div><div class="timer-label">Дней</div></div>
+            <div class="timer-block"><div class="timer-number" id="hours">00</div><div class="timer-label">Часов</div></div>
+            <div class="timer-block"><div class="timer-number" id="minutes">00</div><div class="timer-label">Минут</div></div>
+            <div class="timer-block"><div class="timer-number" id="seconds">00</div><div class="timer-label">Секунд</div></div>
+        </div>
+    </div>
+</div>
+
+<!-- История -->
+<div class="section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Наша история</h2>
+        <div class="divider"></div>
+        <div class="story-grid">
+            <div class="story-text" data-aos="fade-right">
+                <p>История нашей любви началась там, где переплетаются судьбы — в шумном ритме мегаполиса. Случайная встреча в уютной кофейне переросла в долгие разговоры до утра, совместные путешествия и тысячи счастливых моментов.</p>
+                <p>За эти годы мы стали не просто парой, а лучшими друзьями, опорой друг для друга. Артем научил меня смеяться даже в дождливые дни, а я показала ему, что настоящая магия кроется в мелочах.</p>
+                <div class="quote">«Любовь — это когда чужое счастье становится своим собственным»</div>
+            </div>
+            <div class="story-image" data-aos="fade-left">
+                <img src="https://images.pexels.com/photos/2253832/pexels-photo-2253832.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Пара">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Детали + Расширенная программа дня (добавлены новые пункты) -->
+<div class="section" style="background: #fffaf5;">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Программа дня</h2>
+        <div class="divider"></div>
+        <div class="events-grid">
+            <div class="event-card" data-aos="zoom-in" data-aos-delay="0">
+                <div class="event-icon"><i class="fas fa-ring"></i></div>
+                <h3>Выкуп невесты</h3>
+                <div class="event-time">12:00 – 13:30</div>
+                <div class="event-address">Дом невесты: ул. Цветочная, 15</div>
+            </div>
+            <div class="event-card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="event-icon"><i class="fas fa-church"></i></div>
+                <h3>Церемония</h3>
+                <div class="event-time">15:00 – 16:00</div>
+                <div class="event-address">Усадьба «Белый сад», Зал «Розовый закат»</div>
+            </div>
+            <div class="event-card" data-aos="zoom-in" data-aos-delay="150">
+                <div class="event-icon"><i class="fas fa-champagne-glasses"></i></div>
+                <h3>Фуршет & Фотосессия</h3>
+                <div class="event-time">16:00 – 17:00</div>
+                <div class="event-address">Летняя терраса усадьбы</div>
+            </div>
+            <div class="event-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="event-icon"><i class="fas fa-utensils"></i></div>
+                <h3>Банкет</h3>
+                <div class="event-time">17:00 – 23:00</div>
+                <div class="event-address">Усадьба «Белый сад», Банкетный зал</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Галерея: исправлено смещение, добавлено 6 фото (вместо 4) для лучшего вида -->
+<div class="section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Мгновения счастья</h2>
+        <div class="divider"></div>
+        <div class="gallery-grid">        
+            <div class="gallery-item" style="background-image: url('https://images.pexels.com/photos/2600566/pexels-photo-2600566.jpeg?auto=compress&cs=tinysrgb&w=600');" data-aos="fade-up" data-aos-delay="100"></div>
+            <div class="gallery-item" style="background-image: url('https://images.pexels.com/photos/3014857/pexels-photo-3014857.jpeg?auto=compress&cs=tinysrgb&w=600');" data-aos="fade-up" data-aos-delay="200"></div>
+            <div class="gallery-item" style="background-image: url('https://images.pexels.com/photos/2253844/pexels-photo-2253844.jpeg?auto=compress&cs=tinysrgb&w=600');" data-aos="fade-up" data-aos-delay="300"></div>
+            <div class="gallery-item" style="background-image: url('https://images.pexels.com/photos/2735980/pexels-photo-2735980.jpeg?auto=compress&cs=tinysrgb&w=600');" data-aos="fade-up" data-aos-delay="400"></div> 
+        </div>
+    </div>
+</div>
+
+<!-- Новая секция: Информация об усадьбе (место проведения) -->
+<div class="section" style="background: #fffaf5;">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">О месте проведения</h2>
+        <div class="divider"></div>
+        <div class="venue-box" data-aos="fade-up">
+            <div class="venue-info">
+                <h3><i class="fas fa-tree"></i> Усадьба «Белый сад»</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Московская область, Истринский р-н, дер. Белые столбы, 12</p>
+                <p><i class="fas fa-clock"></i> Сбор гостей с 14:30, церемония в 15:00</p>
+                <p><i class="fas fa-car"></i> Бесплатная парковка на территории, трансфер из города по запросу.</p>
+                <p><i class="fas fa-wifi"></i> Гостевой Wi-Fi, комната отдыха, живописный парк для прогулок.</p>
+                <p><i class="fas fa-phone-alt"></i> Консьерж: +7 (495) 123-45-67 (помощь с навигацией)</p>
+            </div>
+            <div class="venue-map">
+                <!-- Карта-заглушка, можно заменить на реальную карту, но для эстетики картинка с усадьбой -->
+                <img src="https://images.pexels.com/photos/3581628/pexels-photo-3581628.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Усадьба Белый сад">
+                <p style="font-size: 0.7rem; text-align: center; margin-top: 8px;">Усадьба «Белый сад», главный вход</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- RSVP форма -->
+<div class="section" id="rsvp">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Подтвердите присутствие</h2>
+        <div class="divider"></div>
+        <div class="rsvp-box" data-aos="fade-up">
+            <form id="rsvpForm">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Ваше полное имя" required>
+                </div>
+                <div class="form-group">
+                    <select id="attendance" required>
+                        <option value="">Буду ли я?</option>
+                        <option value="yes">С радостью приду</option>
+                        <option value="no">Не смогу присутствовать</option>
+                        <option value="plus">Приду с парой/гостем</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" rows="2" placeholder="Ваши пожелания или особые пожелания..."></textarea>
+                </div>
+                <button type="submit" id="submitRsvp">Отправить RSVP <i class="fas fa-heart"></i></button>
+                <div id="rsvpMessage" style="text-align: center; margin-top: 15px; font-size: 0.9rem;"></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Подарки -->
+<div class="gift-section section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Пожелания и подарки</h2>
+        <div class="divider"></div>
+        <div class="gift-note" data-aos="fade-up">
+            <i class="fas fa-gift" style="font-size: 2rem; color: #c4a27a; margin-bottom: 15px; display: inline-block;"></i>
+            <p>Ваше присутствие — самый ценный подарок для нас. Если вы захотите порадовать нас, мы будем благодарны за конверт с тёплыми пожеланиями в день торжества.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>С любовью, <span class="heart">❤️</span> Анастасия и Артем</p>
+    <p style="margin-top: 10px; font-size: 0.8rem;">20 сентября 2026 | Усадьба «Белый сад»</p>
+</footer>
+
+<!-- Библиотеки -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
+
+<script>
+    // AOS инициализация
+    AOS.init({ duration: 800, once: true, offset: 50 });
+
+    // Таймер
+    function updateTimer() {
+        const target = new Date(2026, 8, 20, 15, 0, 0);
+        const now = new Date();
+        const diff = target - now;
+        if (diff <= 0) {
+            document.getElementById('days').innerText = '00';
+            document.getElementById('hours').innerText = '00';
+            document.getElementById('minutes').innerText = '00';
+            document.getElementById('seconds').innerText = '00';
+            return;
+        }
+        const days = Math.floor(diff / (1000*60*60*24));
+        const hours = Math.floor((diff % (86400000)) / 3600000);
+        const mins = Math.floor((diff % 3600000) / 60000);
+        const secs = Math.floor((diff % 60000) / 1000);
+        document.getElementById('days').innerText = days < 10 ? '0'+days : days;
+        document.getElementById('hours').innerText = hours < 10 ? '0'+hours : hours;
+        document.getElementById('minutes').innerText = mins < 10 ? '0'+mins : mins;
+        document.getElementById('seconds').innerText = secs < 10 ? '0'+secs : secs;
+    }
+    setInterval(updateTimer, 1000);
+    updateTimer();
+
+    // RSVP с конфетти и эффектом
+    const rsvpForm = document.getElementById('rsvpForm');
+    const msgDiv = document.getElementById('rsvpMessage');
+
+    if (localStorage.getItem('wedding_rsvp_sent')) {
+        msgDiv.innerHTML = '✅ Вы уже подтвердили участие. Спасибо!';
+        msgDiv.style.color = '#8b5e3c';
+        document.getElementById('submitRsvp').disabled = true;
+        document.getElementById('submitRsvp').style.opacity = '0.6';
+    }
+
+    rsvpForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (localStorage.getItem('wedding_rsvp_sent')) {
+            msgDiv.innerHTML = 'Вы уже отправляли RSVP. Свяжитесь с нами для изменений.';
+            return;
+        }
+        const name = document.getElementById('name').value.trim();
+        const attendance = document.getElementById('attendance').value;
+        if (!name || !attendance) {
+            msgDiv.innerHTML = 'Пожалуйста, укажите имя и выберите статус.';
+            msgDiv.style.color = '#c47a5a';
+            return;
+        }
+        // Сохраняем
+        localStorage.setItem('wedding_rsvp_sent', JSON.stringify({name, attendance, date: new Date()}));
+        msgDiv.innerHTML = `✨ Спасибо, ${name}! Мы ждём вас на нашем празднике! ✨`;
+        msgDiv.style.color = '#8b5e3c';
+        document.getElementById('submitRsvp').disabled = true;
+        document.getElementById('submitRsvp').style.opacity = '0.6';
+        
+        // Конфетти-эффект при успешной отправке
+        canvasConfetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#c4a27a', '#8b5e3c', '#f5e6d3'] });
+        setTimeout(() => {
+            canvasConfetti({ particleCount: 100, spread: 100, origin: { y: 0.5, x: 0.3 }, startVelocity: 15 });
+            canvasConfetti({ particleCount: 100, spread: 100, origin: { y: 0.5, x: 0.7 }, startVelocity: 15 });
+        }, 200);
+        
+        rsvpForm.reset();
+    });
+
+    // Галерея клик — легкий просмотр с уведомлением
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    galleryItems.forEach(item => {
+        item.addEventListener('click', function() {
+            alert('💖 Прекрасный момент из нашей жизни! Свадебный альбом будет доступен позже.');
+        });
+    });
+</script>
+</body>
+</html>
