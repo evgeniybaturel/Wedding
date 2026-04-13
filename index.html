@@ -62,7 +62,7 @@
             margin: 0 auto 40px;
         }
 
-        /* Hero секция — исправлено для Safari (iOS) */
+        /* Hero секция — фон из локальной папки images */
         .hero {
             min-height: 100vh;
             position: relative;
@@ -74,7 +74,7 @@
             overflow: hidden;
         }
         
-        /* Фоновое изображение через отдельный слой — работает на всех устройствах */
+        /* Фоновое изображение из локальной папки images */
         .hero::before {
             content: "";
             position: absolute;
@@ -82,11 +82,11 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: url('https://images.pexels.com/photos/317182/pexels-photo-317182.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            /* ВАЖНО: положите своё фото в папку images и назовите wedding-hero.jpg */
+            background-image: url('images/image-3.jpg');
             background-size: cover;
             background-position: center 30%;
             background-repeat: no-repeat;
-            /* Убираем fixed на мобильных — он вызывает проблемы в Safari */
             background-attachment: scroll;
             filter: brightness(0.85);
             z-index: 1;
@@ -417,13 +417,9 @@
             z-index: 999;
         }
         
-        /* Дополнительная страховка для Safari */
-        @supports (background-attachment: fixed) {
-            @media (max-width: 1024px) {
-                .hero::before {
-                    background-attachment: scroll !important;
-                }
-            }
+        /* Резервный фон, если локальное изображение не загрузилось */
+        .hero.error::before {
+            background-image: linear-gradient(135deg, #8b5e3c, #c4a27a);
         }
     </style>
 </head>
@@ -431,7 +427,7 @@
 
 <canvas id="confetti-canvas"></canvas>
 
-<!-- Hero секция — полностью переделана для корректной работы в Safari на iPhone -->
+<!-- Hero секция с локальным изображением -->
 <section class="hero">
     <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
         <p class="date-large">26 Июля 2026</p>
@@ -667,6 +663,13 @@
             alert('💖 Прекрасный момент из нашей жизни! Свадебный альбом будет доступен позже.');
         });
     });
+    
+    // Проверка загрузки фонового изображения (если не загрузилось — добавляем класс error для резерва)
+    const heroSection = document.querySelector('.hero');
+    const heroBgImage = window.getComputedStyle(heroSection, '::before').backgroundImage;
+    if (heroBgImage === 'none' || heroBgImage === '') {
+        heroSection.classList.add('error');
+    }
 </script>
 </body>
 </html>
