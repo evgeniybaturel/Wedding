@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Свадебное приглашение | Анастасия & Артем</title>
+    <title>Свадебное приглашение | Ирина & Дмитрий</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -62,7 +62,7 @@
             margin: 0 auto 40px;
         }
 
-        /* Hero секция — фон из локальной папки images */
+        /* Hero секция с параллакс-эффектом (работает на iPhone) */
         .hero {
             min-height: 100vh;
             position: relative;
@@ -72,24 +72,31 @@
             text-align: center;
             color: white;
             overflow: hidden;
+            /* Важно: создаём контекст для параллакса */
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
         }
         
-        /* Фоновое изображение из локальной папки images */
-        .hero::before {
-            content: "";
+        /* Контейнер для фонового изображения с параллаксом */
+        .hero-parallax-bg {
             position: absolute;
-            top: 0;
+            top: -10%;
             left: 0;
-            right: 0;
-            bottom: 0;
-            /* ВАЖНО: положите своё фото в папку images и назовите wedding-hero.jpg */
-            background-image: url('images/image-3.jpg');
-            background-size: cover;
-            background-position: center 30%;
-            background-repeat: no-repeat;
-            background-attachment: scroll;
-            filter: brightness(0.85);
+            width: 100%;
+            height: 120%;
             z-index: 1;
+            will-change: transform;
+            transform: translateY(0);
+            -webkit-transform: translateY(0);
+            transition: transform 0.05s linear;
+        }
+        
+        .hero-parallax-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+            display: block;
         }
         
         /* Затемнение поверх фона */
@@ -100,8 +107,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(rgba(30, 20, 15, 0.4), rgba(30, 20, 15, 0.3));
+            background: linear-gradient(rgba(30, 20, 15, 0.45), rgba(30, 20, 15, 0.35));
             z-index: 2;
+            pointer-events: none;
         }
         
         .hero-content {
@@ -160,6 +168,8 @@
             padding: 30px 0;
             border-top: 1px solid #f0e4d4;
             border-bottom: 1px solid #f0e4d4;
+            position: relative;
+            z-index: 5;
         }
         .timer-wrapper {
             display: flex;
@@ -416,19 +426,17 @@
             pointer-events: none;
             z-index: 999;
         }
-        
-        /* Резервный фон, если локальное изображение не загрузилось */
-        .hero.error::before {
-            background-image: linear-gradient(135deg, #8b5e3c, #c4a27a);
-        }
     </style>
 </head>
 <body>
 
 <canvas id="confetti-canvas"></canvas>
 
-<!-- Hero секция с локальным изображением -->
+<!-- Hero секция с параллакс-эффектом -->
 <section class="hero">
+    <div class="hero-parallax-bg" id="parallaxBg">
+        <img src="images/image-3.jpg" alt="Свадебное фото">
+    </div>
     <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
         <p class="date-large">26 Июля 2026</p>
         <h1>Ирина <span class="ampersand">&</span> Дмитрий</h1>
@@ -469,7 +477,7 @@
     </div>
 </div>
 
-<!-- Детали + Расширенная программа дня -->
+<!-- Детали программы дня -->
 <div class="section" style="background: #fffaf5;">
     <div class="container">
         <h2 class="section-title" data-aos="fade-up">Программа дня</h2>
@@ -617,7 +625,33 @@
     setInterval(updateTimer, 1000);
     updateTimer();
 
-    // RSVP с конфетти и эффектом
+    // ПАРАЛЛАКС-ЭФФЕКТ (работает на iPhone и всех устройствах)
+    const parallaxBg = document.getElementById('parallaxBg');
+    let ticking = false;
+    
+    function updateParallax() {
+        if (!parallaxBg) return;
+        const scrollPosition = window.pageYOffset;
+        const heroHeight = window.innerHeight;
+        // Скорость движения фона (0.3 = двигается медленнее контента)
+        const speed = 0.25;
+        const yOffset = scrollPosition * speed;
+        parallaxBg.style.transform = `translateY(${yOffset}px)`;
+        parallaxBg.style.webkitTransform = `translateY(${yOffset}px)`;
+        ticking = false;
+    }
+    
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            requestAnimationFrame(updateParallax);
+            ticking = true;
+        }
+    });
+    
+    // Запускаем один раз при загрузке
+    updateParallax();
+
+    // RSVP с конфетти
     const rsvpForm = document.getElementById('rsvpForm');
     const msgDiv = document.getElementById('rsvpMessage');
 
@@ -640,13 +674,11 @@
             msgDiv.style.color = '#c47a5a';
             return;
         }
-        // Сохраняем
         localStorage.setItem('wedding_rsvp_sent', JSON.stringify({name, attendance, date: new Date()}));
         msgDiv.innerHTML = `✨ Спасибо, ${name}! Мы ждём вас на нашем празднике! ✨`;
         msgDiv.style.color = '#8b5e3c';
         document.getElementById('submitRsvp').disabled = true;
         
-        // Конфетти-эффект при успешной отправке
         canvasConfetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#c4a27a', '#8b5e3c', '#f5e6d3'] });
         setTimeout(() => {
             canvasConfetti({ particleCount: 100, spread: 100, origin: { y: 0.5, x: 0.3 }, startVelocity: 15 });
@@ -663,13 +695,6 @@
             alert('💖 Прекрасный момент из нашей жизни! Свадебный альбом будет доступен позже.');
         });
     });
-    
-    // Проверка загрузки фонового изображения (если не загрузилось — добавляем класс error для резерва)
-    const heroSection = document.querySelector('.hero');
-    const heroBgImage = window.getComputedStyle(heroSection, '::before').backgroundImage;
-    if (heroBgImage === 'none' || heroBgImage === '') {
-        heroSection.classList.add('error');
-    }
 </script>
 </body>
 </html>
