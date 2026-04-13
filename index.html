@@ -62,20 +62,54 @@
             margin: 0 auto 40px;
         }
 
-        /* Hero секция с параллаксом — новая более подходящая картинка */
+        /* Hero секция — исправлено для Safari (iOS) */
         .hero {
             min-height: 100vh;
-            background: linear-gradient(rgba(30, 20, 15, 0.45), rgba(30, 20, 15, 0.35)), url('images/image-3.jpg');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center 30%;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
-            position: relative;
+            overflow: hidden;
         }
+        
+        /* Фоновое изображение через отдельный слой — работает на всех устройствах */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.pexels.com/photos/317182/pexels-photo-317182.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+            /* Убираем fixed на мобильных — он вызывает проблемы в Safari */
+            background-attachment: scroll;
+            filter: brightness(0.85);
+            z-index: 1;
+        }
+        
+        /* Затемнение поверх фона */
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(30, 20, 15, 0.4), rgba(30, 20, 15, 0.3));
+            z-index: 2;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            padding: 20px;
+        }
+        
         .hero-overlay {
             position: absolute;
             bottom: 30px;
@@ -83,29 +117,36 @@
             right: 0;
             text-align: center;
             animation: bounce 2s infinite;
+            z-index: 3;
         }
+        
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(10px); }
         }
+        
         .hero-content h1 {
             font-family: 'Playfair Display', serif;
             font-size: 4rem;
             font-weight: 700;
             letter-spacing: 4px;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.4);
         }
+        
         .hero-content .date-large {
             font-size: 1.5rem;
             letter-spacing: 6px;
             font-weight: 300;
+            text-shadow: 1px 1px 8px rgba(0,0,0,0.3);
         }
+        
         .hero-content .ampersand {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
             margin: 0 15px;
         }
+        
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 2.5rem; }
             .hero-content .date-large { font-size: 1rem; letter-spacing: 3px; }
@@ -217,7 +258,7 @@
             color: #7a6553;
         }
 
-        /* Галерея — исправлено смещение, добавлено центрирование и больше фото */
+        /* Галерея */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -312,6 +353,8 @@
             font-size: 1rem;
             transition: all 0.3s;
             background: #fefcf9;
+            -webkit-appearance: none;
+            appearance: none;
         }
         input:focus, select:focus, textarea:focus {
             outline: none;
@@ -333,6 +376,11 @@
         button:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(139, 94, 60, 0.3);
+        }
+        button:disabled {
+            opacity: 0.6;
+            transform: none;
+            cursor: not-allowed;
         }
 
         /* Подарки */
@@ -368,13 +416,22 @@
             pointer-events: none;
             z-index: 999;
         }
+        
+        /* Дополнительная страховка для Safari */
+        @supports (background-attachment: fixed) {
+            @media (max-width: 1024px) {
+                .hero::before {
+                    background-attachment: scroll !important;
+                }
+            }
+        }
     </style>
 </head>
 <body>
 
 <canvas id="confetti-canvas"></canvas>
 
-<!-- Hero секция с новой картинкой (свадебная арка, цветы) -->
+<!-- Hero секция — полностью переделана для корректной работы в Safari на iPhone -->
 <section class="hero">
     <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
         <p class="date-large">26 Июля 2026</p>
@@ -416,7 +473,7 @@
     </div>
 </div>
 
-<!-- Детали + Расширенная программа дня (добавлены новые пункты) -->
+<!-- Детали + Расширенная программа дня -->
 <div class="section" style="background: #fffaf5;">
     <div class="container">
         <h2 class="section-title" data-aos="fade-up">Программа дня</h2>
@@ -450,7 +507,7 @@
     </div>
 </div>
 
-<!-- Галерея: исправлено смещение, добавлено 6 фото (вместо 4) для лучшего вида -->
+<!-- Галерея -->
 <div class="section">
     <div class="container">
         <h2 class="section-title" data-aos="fade-up">Мгновения счастья</h2>
@@ -464,7 +521,7 @@
     </div>
 </div>
 
-<!-- Новая секция: Информация об усадьбе (место проведения) -->
+<!-- Информация об усадьбе -->
 <div class="section" style="background: #fffaf5;">
     <div class="container">
         <h2 class="section-title" data-aos="fade-up">О месте проведения</h2>
@@ -479,8 +536,7 @@
                 <p><i class="fas fa-phone-alt"></i> Консьерж: +7 (495) 123-45-67 (помощь с навигацией)</p>
             </div>
             <div class="venue-map">
-                <!-- Карта-заглушка, можно заменить на реальную карту, но для эстетики картинка с усадьбой -->
-                <img src="images/image-2.png" alt="Усадьба Белый сад">
+                <img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Усадьба Белый сад">
                 <p style="font-size: 0.7rem; text-align: center; margin-top: 8px;">Усадьба «Белый сад», главный вход</p>
             </div>
         </div>
@@ -573,7 +629,6 @@
         msgDiv.innerHTML = '✅ Вы уже подтвердили участие. Спасибо!';
         msgDiv.style.color = '#8b5e3c';
         document.getElementById('submitRsvp').disabled = true;
-        document.getElementById('submitRsvp').style.opacity = '0.6';
     }
 
     rsvpForm.addEventListener('submit', function(e) {
@@ -594,7 +649,6 @@
         msgDiv.innerHTML = `✨ Спасибо, ${name}! Мы ждём вас на нашем празднике! ✨`;
         msgDiv.style.color = '#8b5e3c';
         document.getElementById('submitRsvp').disabled = true;
-        document.getElementById('submitRsvp').style.opacity = '0.6';
         
         // Конфетти-эффект при успешной отправке
         canvasConfetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#c4a27a', '#8b5e3c', '#f5e6d3'] });
@@ -606,7 +660,7 @@
         rsvpForm.reset();
     });
 
-    // Галерея клик — легкий просмотр с уведомлением
+    // Галерея клик
     const galleryItems = document.querySelectorAll('.gallery-item');
     galleryItems.forEach(item => {
         item.addEventListener('click', function() {
