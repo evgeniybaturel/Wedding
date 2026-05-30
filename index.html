@@ -67,7 +67,6 @@
             pointer-events: none;
         }
         
-        
         .hero::before {
             content: "";
             position: absolute;
@@ -113,67 +112,36 @@
             50% { transform: translateY(10px); } 
         }
         
-        .hero-wedding-day {
+        .hero-names {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            font-size: 3.8rem;
+            line-height: 0.85;
+            color: #8b1830;
+        }
+        
+        .hero-names .second-name {
+            margin-left: 30px;
+        }
+        
+        .hero-subtitle {
+            margin-top: 20px;
             font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
             font-weight: 400;
-            font-size: 1.2rem;
-            letter-spacing: 6px;
+            letter-spacing: 4px;
             text-transform: uppercase;
             color: #A1223A;
-            margin-bottom: 10px;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
-        }
-        
-        .hero-names {
-            display:flex;
-            flex-direction:column;
-            align-items:flex-start;
-            font-family:'Cormorant Garamond', serif;
-            font-weight:500;
-            font-size:3.8rem;
-            line-height:0.78;
-            color:#8b1830;
-        }
-
-        
-.hero-names .second-name{
-    transform: translateX(56px);
-}
-
-.hero-subtitle{
-    transform: translateX(28px);
-            margin-top:12px;
-            font-family:'Montserrat',sans-serif;
-            font-size:1rem;
-            font-weight:300;
-            letter-spacing:10px;
-            text-transform:uppercase;
-            color:#888;
-        }
-        
-                
-        .hero-divider {
-            width: 80px;
-            height: 2px;
-            background: #A1223A;
-            margin: 10px auto;
-            opacity: 0.7;
-        }
-        
-        .hero-date {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 400;
-            font-size: 1.2rem;
-            letter-spacing: 4px;
-            color: #A1223A;
-            margin-top: 8px;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
         }
         
         @media (max-width: 768px) {
             .hero-content {
                 justify-content: flex-start;
                 padding-top: 40px;
+                padding-left: 20px;
                 padding-bottom: 20px;
             }
             
@@ -181,11 +149,9 @@
             .section-title { font-size: 2.5rem; }
             .divider { margin-bottom: 25px; }
             
-            .hero-wedding-day { font-size: 0.9rem; letter-spacing: 4px; margin-bottom: 8px; }
-            .hero-names { font-size: 4.5rem; gap: 12px; }
-            .hero-names i { font-size: 2.2rem; }
-            .hero-divider { width: 50px; margin: 8px auto; }
-            .hero-date { font-size: 0.9rem; letter-spacing: 3px; margin-top: 6px; }
+            .hero-names { font-size: 2.5rem; }
+            .hero-names .second-name { margin-left: 20px; }
+            .hero-subtitle { font-size: 0.55rem; letter-spacing: 3px; margin-top: 15px; }
             
             .timer-label-text {
                 font-size: 1.4rem;
@@ -216,12 +182,10 @@
         
         @media (max-width: 480px) {
             .section-title { font-size: 2.2rem; }
-            .hero-content { padding-top: 30px; }
-            .hero-wedding-day { font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 6px; }
-            .hero-names { font-size: 3rem; gap: 8px; }
-            .hero-names i { font-size: 1.5rem; }
-            .hero-divider { width: 40px; margin: 6px auto; }
-            .hero-date { font-size: 0.75rem; letter-spacing: 2px; margin-top: 5px; }
+            .hero-content { padding-top: 30px; padding-left: 15px; }
+            .hero-names { font-size: 1.8rem; }
+            .hero-names .second-name { margin-left: 12px; }
+            .hero-subtitle { font-size: 0.45rem; letter-spacing: 2px; margin-top: 10px; }
             
             .timer-label-text {
                 font-size: 1.2rem;
