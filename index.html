@@ -115,82 +115,20 @@
             color: #666;
         }
         
-        @media (max-width: 768px) {
-            .hero-names span:last-child {
-                margin-left: 25px;
-            }
-            .hero-subtitle {
-                margin-left: 70px;
-                font-size: 0.95rem;
-                letter-spacing: 1.5px;
-            }
-            .hero-content {
-                justify-content: flex-start;
-                padding-top: 40px;
-                padding-bottom: 20px;
-            }
-            
-            .section { padding: 40px 0; }
-            .section-title { font-size: 2.5rem; }
-            .divider { margin-bottom: 25px; }
-            
-            .hero-names { font-size: 4.5rem; }
-            
-            .timer-label-text {
-                font-size: 1.4rem;
-                margin-bottom: 15px;
-            }
-            .timer-block { padding: 8px 12px; min-width: 65px; }
-            .timer-number { font-size: 1.3rem; }
-            .timer-label { font-size: 0.55rem; }
-            
-            .event-card { padding: 20px 15px; }
-            .event-card h3 { font-size: 1.6rem; }
-            .event-icon { font-size: 2rem; margin-bottom: 15px; }
-            .event-time { font-size: 0.9rem; }
-            .event-description { font-size: 0.8rem; }
-            .venue-box { padding: 25px; gap: 20px; }
-            .venue-info p { font-size: 0.9rem; }
-            .venue-map img { border-radius: 15px; }
-            .rsvp-box { padding: 25px; }
-            .form-label { font-size: 0.9rem; }
-            .radio-option span, .checkbox-option span { font-size: 0.8rem; }
-            .radio-group, .checkbox-group { gap: 12px; }
-            button { padding: 12px 20px; font-size: 0.9rem; }
-            .gift-note { font-size: 0.9rem; }
-            .footer { padding: 25px 15px; }
-            .footer p { font-size: 0.85rem; }
+        .hero-overlay {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            animation: bounce 2s infinite;
+            z-index: 3;
+            color: white;
         }
         
-        @media (max-width: 480px) {
-            .hero-names span:last-child {
-                margin-left: 18px;
-            }
-            .hero-subtitle {
-                margin-left: 45px;
-                font-size: 0.8rem;
-                letter-spacing: 1px;
-                margin-top: 12px;
-            }
-            .section-title { font-size: 2.2rem; }
-            .hero-content { padding-top: 30px; }
-            .hero-names { font-size: 3rem; }
-            
-            .timer-label-text {
-                font-size: 1.2rem;
-                margin-bottom: 12px;
-            }
-            .timer-block { padding: 5px 8px; min-width: 55px; }
-            .timer-number { font-size: 1.1rem; }
-            .timer-label { font-size: 0.5rem; }
-            
-            .event-card h3 { font-size: 1.3rem; }
-            .event-icon { font-size: 1.6rem; }
-            .event-time { font-size: 0.8rem; }
-            .event-description { font-size: 0.7rem; }
-            .venue-info p { font-size: 0.8rem; }
-            .radio-option span, .checkbox-option span { font-size: 0.7rem; }
-            .radio-group, .checkbox-group { gap: 8px; }
+        @keyframes bounce { 
+            0%, 100% { transform: translateY(0); } 
+            50% { transform: translateY(10px); } 
         }
         
         .timer-section {
@@ -211,29 +149,64 @@
         .timer-wrapper {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
+            gap: 15px;
+            flex-wrap: nowrap;
         }
         .timer-block {
             text-align: center;
             background: #FFFFFF;
-            padding: 12px 20px;
+            padding: 10px 15px;
             border-radius: 16px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-            min-width: 80px;
+            min-width: 75px;
             border: 1px solid #f0e0d8;
+            flex: 0 0 auto;
         }
         .timer-number {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: #A1223A;
             font-family: 'Montserrat', sans-serif;
         }
         .timer-label {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             color: #555;
+        }
+        
+        /* Карточка как venue-box */
+        .story-card {
+            background: white;
+            border-radius: 30px;
+            padding: 45px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            border: 1px solid #f0e0d8;
+            text-align: center;
+        }
+        .story-card p {
+            margin-bottom: 20px;
+            font-size: 1rem;
+            color: #000000;
+            text-align: center;
+        }
+        .story-card .last-line {
+            font-family: 'Raleway', sans-serif;
+            font-style: normal;
+            color: #000000;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+        .story-icon {
+            font-size: 2.5rem;
+            color: #A1223A;
+            margin-bottom: 20px;
+        }
+        .highlight-number {
+            color: #A1223A;
+            font-weight: 700;
         }
         
         .venue-title {
@@ -307,31 +280,21 @@
             transform: scale(1.02);
         }
         
-        @media (max-width: 768px) {
-            .venue-title {
-                font-size: 1.4rem;
-                white-space: normal;
-                text-align: center;
-            }
-            .venue-box { 
-                flex-direction: column; 
-                text-align: center; 
-            }
-            .venue-info p {
-                justify-content: flex-start;
-                text-align: left;
-            }
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
         }
-        
-        .story-centered { max-width: 800px; margin: 0 auto; text-align: center; }
-        .story-centered p { margin-bottom: 20px; font-size: 1rem; color: #000000; text-align: center; }
-        .story-centered .last-line { font-family: 'Raleway', sans-serif; font-style: normal; color: #000000; font-size: 1rem; margin-top: 20px; }
-        .highlight-number {
-            color: #A1223A;
-            font-weight: 700;
+        .event-card {
+            background: white;
+            border-radius: 24px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 1px solid #f0e0d8;
         }
-        .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 20px; }
-        .event-card { background: white; border-radius: 24px; padding: 30px 20px; text-align: center; transition: all 0.3s ease; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid #f0e0d8; }
         .event-card:hover { transform: translateY(-8px); box-shadow: 0 20px 35px rgba(0,0,0,0.1); }
         .event-icon { font-size: 2.5rem; color: #A1223A; margin-bottom: 20px; }
         .event-card h3 { 
@@ -344,14 +307,48 @@
         .event-time { font-weight: 600; margin-bottom: 12px; color: #555; font-size: 1rem; }
         .event-description { font-size: 0.9rem; color: #666; line-height: 1.4; }
         
-        .details-grid { display: flex; flex-direction: column; gap: 30px; max-width: 800px; margin: 0 auto; }
-        .detail-card { background: white; border-radius: 24px; padding: 30px; text-align: center; transition: all 0.3s ease; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid #f0e0d8; }
+        .details-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .detail-card {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 1px solid #f0e0d8;
+        }
         .detail-icon { font-size: 2.5rem; color: #A1223A; margin-bottom: 20px; }
         .detail-text { font-size: 1rem; color: #000000; line-height: 1.5; }
         
-        .venue-box { background: white; border-radius: 30px; padding: 40px; margin-top: 30px; display: flex; flex-wrap: wrap; gap: 30px; align-items: center; box-shadow: 0 15px 35px rgba(0,0,0,0.05); border: 1px solid #f0e0d8; }
+        .venue-box {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            border: 1px solid #f0e0d8;
+        }
         .venue-info { flex: 2; }
-        .rsvp-box { background: white; border-radius: 30px; padding: 45px; max-width: 700px; margin: 0 auto; box-shadow: 0 20px 40px rgba(0,0,0,0.05); border: 1px solid #f0e0d8; }
+        
+        .rsvp-box {
+            background: white;
+            border-radius: 30px;
+            padding: 45px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            border: 1px solid #f0e0d8;
+        }
         .rsvp-subtitle {
             text-align: center;
             font-size: 1rem;
@@ -360,19 +357,101 @@
             font-family: 'Raleway', sans-serif;
         }
         .form-group { margin-bottom: 25px; }
-        .form-label { font-family: 'Raleway', sans-serif; font-size: 1rem; font-weight: 500; color: #000000; margin-bottom: 8px; display: block; }
-        .radio-group, .checkbox-group { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 10px; }
-        .radio-option, .checkbox-option { display: flex; align-items: center; gap: 8px; cursor: pointer; }
-        .radio-option input, .checkbox-option input { width: 18px; height: 18px; cursor: pointer; accent-color: #A1223A; margin: 0; }
-        .radio-option span, .checkbox-option span { font-family: 'Raleway', sans-serif; font-size: 0.95rem; color: #000000; }
-        input[type="text"] { width: 100%; padding: 14px 20px; border: 1px solid #e0d0c8; border-radius: 50px; font-family: 'Raleway', sans-serif; font-size: 1rem; background: #FFFFFF; }
-        input[type="text"]:focus { outline: none; border-color: #A1223A; box-shadow: 0 0 0 3px rgba(161, 34, 58, 0.1); }
-        button { background: #A1223A; color: white; border: none; padding: 14px 35px; font-size: 1rem; font-weight: 600; border-radius: 50px; cursor: pointer; width: 100%; transition: transform 0.2s, box-shadow 0.2s; }
-        button:hover { background: #7A1A2E; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(161, 34, 58, 0.3); }
-        button:disabled { opacity: 0.6; transform: none; cursor: not-allowed; }
-        .gift-section { background: #FFFFFF; text-align: center; border-top: 1px solid #f0e0d8; border-bottom: 1px solid #f0e0d8; }
-        .footer { background: #A1223A; color: #f0d8d8; text-align: center; padding: 40px 20px; }
+        .form-label { font-family: 'Raleway', sans-serif; font-size: 1rem; font-weight: 500; color: #000000; margin-bottom: 12px; display: block; }
+        
+        /* Вертикальное расположение вариантов ответов */
+        .radio-group, .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 5px;
+        }
+        .radio-option, .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+        .radio-option input, .checkbox-option input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #A1223A;
+            margin: 0;
+        }
+        .radio-option span, .checkbox-option span {
+            font-family: 'Raleway', sans-serif;
+            font-size: 0.95rem;
+            color: #000000;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 14px 20px;
+            border: 1px solid #e0d0c8;
+            border-radius: 50px;
+            font-family: 'Raleway', sans-serif;
+            font-size: 1rem;
+            background: #FFFFFF;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #A1223A;
+            box-shadow: 0 0 0 3px rgba(161, 34, 58, 0.1);
+        }
+        button {
+            background: #A1223A;
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        button:hover {
+            background: #7A1A2E;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(161, 34, 58, 0.3);
+        }
+        button:disabled {
+            opacity: 0.6;
+            transform: none;
+            cursor: not-allowed;
+        }
+        
+        .footer {
+            background: #A1223A;
+            color: #f0d8d8;
+            text-align: center;
+            padding: 40px 20px;
+        }
         #confetti-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999; }
+        
+        @media (max-width: 768px) {
+            .timer-block { padding: 8px 10px; min-width: 65px; }
+            .timer-number { font-size: 1.3rem; }
+            .timer-label { font-size: 0.55rem; }
+            .timer-wrapper { gap: 10px; }
+            .story-card { padding: 25px; }
+            .venue-title {
+                font-size: 1.4rem;
+                white-space: normal;
+                text-align: center;
+            }
+            .venue-box { flex-direction: column; text-align: center; }
+            .venue-info p { justify-content: flex-start; text-align: left; }
+            .section-title { font-size: 2.5rem; }
+        }
+        
+        @media (max-width: 550px) {
+            .timer-wrapper { gap: 8px; }
+            .timer-block { padding: 6px 8px; min-width: 55px; }
+            .timer-number { font-size: 1rem; }
+            .timer-label { font-size: 0.45rem; }
+        }
     </style>
 </head>
 <body>
@@ -383,7 +462,7 @@
     <div class="hero-parallax-bg" id="parallaxBg">
         <picture>
             <source media="(max-width: 768px)" srcset="images/image-3-mobile.jpg">
-            <img src="images/image-3.jpg" alt="Свадебное фото на море">
+            <img src="images/image-3.png" alt="Свадебное фото на море">
         </picture>
     </div>
     <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
@@ -418,7 +497,8 @@
     <div class="container">
         <h2 class="section-title" data-aos="fade-up">Дорогие наши</h2>
         <div class="divider"></div>
-        <div class="story-centered" data-aos="fade-up">
+        <div class="story-card" data-aos="fade-up">
+            <div class="story-icon"><i class="fas fa-heart"></i></div>
             <p>Свершилось: мы решили стать семьёй!<br>И мы просто не можем сделать это по-тихому, без вас!</p>
             <p>Собираем всех самых родных на наш главный праздник. С нас - вкусная еда и ледяное игристое, с вас - хорошее настроение и готовность зажигать</p>
             <p class="last-line">Ждём с нетерпением <span class="highlight-number">23</span> августа!</p>
@@ -522,7 +602,7 @@
                 
                 <div class="form-group">
                     <div class="form-label">Какой алкоголь вы предпочитаете?</div>
-                    <div class="checkbox-group" style="flex-wrap: nowrap; overflow-x: auto; gap: 12px;">
+                    <div class="checkbox-group">
                         <label class="checkbox-option"><input type="checkbox" name="alcohol" value="вино"> <span>Вино</span></label>
                         <label class="checkbox-option"><input type="checkbox" name="alcohol" value="шампанское"> <span>Шампанское</span></label>
                         <label class="checkbox-option"><input type="checkbox" name="alcohol" value="виски"> <span>Виски</span></label>
