@@ -18,6 +18,7 @@
         .section-title { font-family: 'Great Vibes', cursive; font-size: 4rem; font-weight: 400; text-align: center; color: #8B0000; margin-bottom: 20px; letter-spacing: 1px; }
         .divider { width: 80px; height: 2px; background: #8B0000; margin: 0 auto 40px; opacity: 0.5; }
         
+        /* Hero секция */
         .hero {
             min-height: 100vh;
             position: relative;
@@ -41,6 +42,7 @@
             transform: translateY(0);
         }
         
+        .hero-parallax-bg picture,
         .hero-parallax-bg img {
             width: 100%;
             height: 100%;
@@ -102,7 +104,7 @@
         .wedding-day { font-family: 'Raleway', sans-serif; font-size: 1.2rem; letter-spacing: 6px; text-transform: uppercase; color: #000000; margin-top: -10px; margin-right: 5px; }
         .hero-date { font-family: 'Raleway', sans-serif; font-size: 1rem; letter-spacing: 3px; color: #000000; margin-top: 5px; margin-right: 5px; }
         
-        /* ===== МОБИЛЬНАЯ АДАПТАЦИЯ — МЕНЬШЕ МАСШТАБ ФОТО ===== */
+        /* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
         @media (max-width: 768px) {
             .section { padding: 40px 0; }
             .section-title { font-size: 2.5rem; }
@@ -110,14 +112,8 @@
             
             .hero-content { 
                 padding: 15px 20px; 
-                padding-top: 30px; 
+                padding-top: 40px; 
                 padding-bottom: 20px;
-            }
-            
-            /* Уменьшаем картинку через scale */
-            .hero-parallax-bg img {
-                transform: scale(0.75);
-                object-position: 50% 40%;
             }
             
             /* Имена — уменьшаем */
@@ -126,20 +122,20 @@
             }
             .name-dima { 
                 margin-right: 10px; 
-                margin-top: -6px;
+                margin-top: -8px;
             }
             
             .wedding-day { 
                 font-size: 0.7rem; 
                 letter-spacing: 2px; 
-                margin-top: -3px;
+                margin-top: -5px;
                 margin-right: 3px;
             }
             
             .hero-date { 
                 font-size: 0.65rem; 
                 letter-spacing: 1px; 
-                margin-top: 2px;
+                margin-top: 3px;
                 margin-right: 3px;
             }
             
@@ -153,8 +149,9 @@
             .timer-block { padding: 10px 15px; min-width: 70px; }
             .timer-number { font-size: 1.5rem; }
             .timer-label { font-size: 0.65rem; }
+            .timer-wrapper { gap: 15px; }
             
-            /* Карточки */
+            /* Карточки программы */
             .event-card { padding: 20px 15px; }
             .event-card h3 { font-size: 1.6rem; }
             .event-icon { font-size: 2rem; margin-bottom: 15px; }
@@ -182,17 +179,11 @@
         /* Очень маленькие телефоны */
         @media (max-width: 480px) {
             .section-title { font-size: 2.2rem; }
-            
-            /* Ещё сильнее уменьшаем картинку */
-            .hero-parallax-bg img {
-                transform: scale(0.65);
-            }
-            
-            .name-ira, .name-dima { font-size: 1.8rem; }
-            .name-dima { margin-right: 6px; margin-top: -4px; }
-            .wedding-day { font-size: 0.6rem; letter-spacing: 1.5px; }
-            .hero-date { font-size: 0.55rem; }
-            .names-container { margin-top: -100px; margin-right: 5px; }
+            .name-ira, .name-dima { font-size: 2rem; }
+            .name-dima { margin-right: 8px; margin-top: -6px; }
+            .wedding-day { font-size: 0.65rem; letter-spacing: 1.5px; }
+            .hero-date { font-size: 0.6rem; }
+            .names-container { margin-top: -90px; margin-right: 8px; }
             
             .timer-block { padding: 6px 10px; min-width: 55px; }
             .timer-number { font-size: 1.2rem; }
@@ -209,7 +200,7 @@
             .radio-group, .checkbox-group { gap: 8px; }
         }
         
-        /* Остальные стили без изменений */
+        /* Остальные стили */
         .timer-section { background: #FFFFFF; padding: 30px 0; border-top: 1px solid #f0e0d8; border-bottom: 1px solid #f0e0d8; }
         .timer-wrapper { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
         .timer-block { text-align: center; background: #FFFFFF; padding: 15px 25px; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); min-width: 100px; border: 1px solid #f0e0d8; }
@@ -255,10 +246,15 @@
 
 <canvas id="confetti-canvas"></canvas>
 
-<!-- Hero секция -->
+<!-- Hero секция с адаптивной картинкой -->
 <section class="hero">
     <div class="hero-parallax-bg" id="parallaxBg">
-        <img src="images/image-3.png" alt="Свадебное фото на море">
+        <picture>
+            <!-- Мобильная версия (до 768px) -->
+            <source media="(max-width: 768px)" srcset="images/image-3-mobile.png">
+            <!-- Десктопная версия (по умолчанию) -->
+            <img src="images/image-3.png" alt="Свадебное фото на море">
+        </picture>
     </div>
     <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
         <div class="hero-top">
