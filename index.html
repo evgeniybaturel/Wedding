@@ -67,7 +67,6 @@
             pointer-events: none;
         }
         
-        
         .hero::before {
             content: "";
             position: absolute;
@@ -88,7 +87,8 @@
             align-items: flex-start;
             justify-content: flex-start;
             padding-top: 70px;
-            padding-left: 35px;
+            /* Увеличиваем отступ слева, чтобы сместить весь блок правее */
+            padding-left: 120px;
         }
         
         .hero-top { 
@@ -125,23 +125,23 @@
         }
         
         .hero-names {
-            display:flex;
-            flex-direction:column;
-            align-items:flex-start;
-            font-family:'Cormorant Garamond', serif;
-            font-weight:800; /* Жирный шрифт для имён */
-            font-size:4.3rem;
-            line-height:0.85;
-            color:#8b1830;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 800;
+            font-size: 4.3rem;
+            line-height: 0.85;
+            color: #8b1830;
         }
 
-        /* Уменьшенный и более плотный сабтайтл (WEDDING DAY) */
+        /* Уменьшенный и более плотный сабтайтл (WEDDING DAY), теперь тоже смещен вместе с родителем */
         .hero-subtitle {
             margin-top: 12px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;        /* уменьшен размер */
+            font-size: 0.85rem;
             font-weight: 500;
-            letter-spacing: 1px;        /* сильно уменьшен интервал (было 7px) */
+            letter-spacing: 1px;
             text-transform: uppercase;
             color: #666;
         }
@@ -164,13 +164,12 @@
             text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
         }
         
+        /* Адаптивность для планшетов и мобильных — уменьшаем смещение, чтобы не уезжало за край */
         @media (max-width: 768px) {
             .hero-content {
-                justify-content: flex-start;
+                padding-left: 40px;  /* на планшетах отступ меньше, но все равно правее чем было */
                 padding-top: 40px;
-                padding-bottom: 20px;
             }
-            
             .section { padding: 40px 0; }
             .section-title { font-size: 2.5rem; }
             .divider { margin-bottom: 25px; }
@@ -210,8 +209,11 @@
         }
         
         @media (max-width: 480px) {
+            .hero-content {
+                padding-left: 25px;  /* на узких экранах отступ минимальный, но все же не впритык */
+                padding-top: 30px;
+            }
             .section-title { font-size: 2.2rem; }
-            .hero-content { padding-top: 30px; }
             .hero-wedding-day { font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 6px; }
             .hero-names { font-size: 3rem; gap: 8px; }
             .hero-names i { font-size: 1.5rem; }
@@ -404,12 +406,12 @@
     </div>
     <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
         <div class="hero-top">
-            <!-- Имена Ира и Дима: добавлен жирный вес + класс hero-names уже имеет жирность 800 -->
+            <!-- Имена Ира и Дима жирные + вся группа сдвинута правей за счет padding-left родителя -->
             <div class="hero-names">
                 <span>Ира</span>
                 <span>Дима</span>
             </div>
-            <!-- Измененный сабтайтл: уменьшен размер шрифта и межбуквенный интервал -->
+            <!-- Подпись WEDDING DAY также сдвинута вместе с блоком, отступ от левого края увеличен -->
             <div class="hero-subtitle">
                 WEDDING DAY · 23.08.2026
             </div>
