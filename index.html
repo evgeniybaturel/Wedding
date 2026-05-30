@@ -140,12 +140,7 @@
                 font-size: 1.4rem;
                 margin-bottom: 15px;
             }
-            .timer-block { 
-                padding: 8px 0; 
-                min-width: 70px; 
-                width: auto;
-                flex: 1;
-            }
+            .timer-block { padding: 8px 12px; min-width: 65px; }
             .timer-number { font-size: 1.3rem; }
             .timer-label { font-size: 0.55rem; }
             
@@ -185,10 +180,7 @@
                 font-size: 1.2rem;
                 margin-bottom: 12px;
             }
-            .timer-block { 
-                padding: 6px 0; 
-                min-width: 60px;
-            }
+            .timer-block { padding: 5px 8px; min-width: 55px; }
             .timer-number { font-size: 1.1rem; }
             .timer-label { font-size: 0.5rem; }
             
@@ -198,37 +190,7 @@
             .event-description { font-size: 0.7rem; }
             .venue-info p { font-size: 0.8rem; }
             .radio-option span, .checkbox-option span { font-size: 0.7rem; }
-        }
-        
-        /* Фикс для таймера: все блоки одинакового размера, помещаются в строку */
-        .timer-wrapper {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: nowrap;
-            width: 100%;
-        }
-        .timer-block {
-            text-align: center;
-            background: #FFFFFF;
-            padding: 12px 0;
-            border-radius: 16px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-            border: 1px solid #f0e0d8;
-            flex: 1;
-            min-width: 0;
-            max-width: 100px;
-        }
-        @media (max-width: 550px) {
-            .timer-wrapper { gap: 8px; }
-            .timer-block { padding: 8px 0; }
-            .timer-number { font-size: 1rem; }
-            .timer-label { font-size: 0.45rem; }
-        }
-        @media (max-width: 450px) {
-            .timer-wrapper { gap: 6px; }
-            .timer-block { min-width: 55px; }
-            .timer-number { font-size: 0.9rem; }
+            .radio-group, .checkbox-group { gap: 8px; }
         }
         
         .timer-section {
@@ -246,41 +208,32 @@
             margin-bottom: 20px;
             letter-spacing: 1px;
         }
-        
-        /* Карточка для основного текста */
-        .story-card {
-            background: white;
-            border-radius: 30px;
-            padding: 45px 35px;
-            max-width: 800px;
-            margin: 0 auto;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        .timer-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .timer-block {
+            text-align: center;
+            background: #FFFFFF;
+            padding: 12px 20px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            min-width: 80px;
             border: 1px solid #f0e0d8;
-            transition: transform 0.3s ease;
         }
-        .story-card:hover {
-            transform: translateY(-5px);
-        }
-        .story-card p {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: #2c2c2c;
-            margin-bottom: 20px;
-            font-family: 'Raleway', sans-serif;
-        }
-        .story-card .last-line {
-            font-family: 'Raleway', sans-serif;
-            font-style: normal;
+        .timer-number {
+            font-size: 1.8rem;
+            font-weight: 700;
             color: #A1223A;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-top: 15px;
-            margin-bottom: 0;
+            font-family: 'Montserrat', sans-serif;
         }
-        .highlight-number {
-            color: #A1223A;
-            font-weight: 800;
-            font-size: 1.3rem;
+        .timer-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #555;
         }
         
         .venue-title {
@@ -368,10 +321,15 @@
                 justify-content: flex-start;
                 text-align: left;
             }
-            .story-card { padding: 30px 20px; }
-            .story-card p { font-size: 0.95rem; }
         }
         
+        .story-centered { max-width: 800px; margin: 0 auto; text-align: center; }
+        .story-centered p { margin-bottom: 20px; font-size: 1rem; color: #000000; text-align: center; }
+        .story-centered .last-line { font-family: 'Raleway', sans-serif; font-style: normal; color: #000000; font-size: 1rem; margin-top: 20px; }
+        .highlight-number {
+            color: #A1223A;
+            font-weight: 700;
+        }
         .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 20px; }
         .event-card { background: white; border-radius: 24px; padding: 30px 20px; text-align: center; transition: all 0.3s ease; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid #f0e0d8; }
         .event-card:hover { transform: translateY(-8px); box-shadow: 0 20px 35px rgba(0,0,0,0.1); }
@@ -401,106 +359,20 @@
             margin-bottom: 30px;
             font-family: 'Raleway', sans-serif;
         }
-        .form-group { margin-bottom: 28px; }
-        .form-label { font-family: 'Raleway', sans-serif; font-size: 1rem; font-weight: 600; color: #222; margin-bottom: 12px; display: block; }
-        
-        /* Вертикальное расположение радио и чекбоксов */
-        .radio-group {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            margin-top: 5px;
-        }
-        .checkbox-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 5px;
-        }
-        .radio-option, .checkbox-option {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-            padding: 8px 12px;
-            border-radius: 40px;
-            background: #faf7f5;
-            transition: background 0.2s;
-        }
-        .radio-option:hover, .checkbox-option:hover {
-            background: #f5ede8;
-        }
-        .radio-option input, .checkbox-option input {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-            accent-color: #A1223A;
-            margin: 0;
-        }
-        .radio-option span, .checkbox-option span {
-            font-family: 'Raleway', sans-serif;
-            font-size: 1rem;
-            color: #1f1f1f;
-            font-weight: 500;
-        }
-        
-        input[type="text"] {
-            width: 100%;
-            padding: 15px 24px;
-            border: 1px solid #e0d0c8;
-            border-radius: 50px;
-            font-family: 'Raleway', sans-serif;
-            font-size: 1rem;
-            background: #FFFFFF;
-            transition: all 0.2s;
-        }
-        input[type="text"]:focus {
-            outline: none;
-            border-color: #A1223A;
-            box-shadow: 0 0 0 3px rgba(161, 34, 58, 0.1);
-        }
-        button {
-            background: #A1223A;
-            color: white;
-            border: none;
-            padding: 14px 35px;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 50px;
-            cursor: pointer;
-            width: 100%;
-            transition: transform 0.2s, box-shadow 0.2s;
-            margin-top: 10px;
-        }
-        button:hover {
-            background: #7A1A2E;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(161, 34, 58, 0.3);
-        }
-        button:disabled {
-            opacity: 0.6;
-            transform: none;
-            cursor: not-allowed;
-        }
-        .footer {
-            background: #A1223A;
-            color: #f0d8d8;
-            text-align: center;
-            padding: 40px 20px;
-        }
-        #confetti-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 999;
-        }
-        @media (max-width: 600px) {
-            .rsvp-box { padding: 25px; }
-            .radio-option, .checkbox-option { padding: 5px 8px; }
-        }
+        .form-group { margin-bottom: 25px; }
+        .form-label { font-family: 'Raleway', sans-serif; font-size: 1rem; font-weight: 500; color: #000000; margin-bottom: 8px; display: block; }
+        .radio-group, .checkbox-group { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 10px; }
+        .radio-option, .checkbox-option { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+        .radio-option input, .checkbox-option input { width: 18px; height: 18px; cursor: pointer; accent-color: #A1223A; margin: 0; }
+        .radio-option span, .checkbox-option span { font-family: 'Raleway', sans-serif; font-size: 0.95rem; color: #000000; }
+        input[type="text"] { width: 100%; padding: 14px 20px; border: 1px solid #e0d0c8; border-radius: 50px; font-family: 'Raleway', sans-serif; font-size: 1rem; background: #FFFFFF; }
+        input[type="text"]:focus { outline: none; border-color: #A1223A; box-shadow: 0 0 0 3px rgba(161, 34, 58, 0.1); }
+        button { background: #A1223A; color: white; border: none; padding: 14px 35px; font-size: 1rem; font-weight: 600; border-radius: 50px; cursor: pointer; width: 100%; transition: transform 0.2s, box-shadow 0.2s; }
+        button:hover { background: #7A1A2E; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(161, 34, 58, 0.3); }
+        button:disabled { opacity: 0.6; transform: none; cursor: not-allowed; }
+        .gift-section { background: #FFFFFF; text-align: center; border-top: 1px solid #f0e0d8; border-bottom: 1px solid #f0e0d8; }
+        .footer { background: #A1223A; color: #f0d8d8; text-align: center; padding: 40px 20px; }
+        #confetti-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999; }
     </style>
 </head>
 <body>
@@ -510,8 +382,8 @@
 <section class="hero">
     <div class="hero-parallax-bg" id="parallaxBg">
         <picture>
-            <source media="(max-width: 768px)" srcset="https://placehold.co/800x1200/f8f5f2/8b1830?text=Wedding+Mobile">
-            <img src="https://placehold.co/1600x1200/f8f5f2/8b1830?text=Wedding+Couple" alt="Свадебное фото на море">
+            <source media="(max-width: 768px)" srcset="images/image-3-mobile.jpg">
+            <img src="images/image-3.png" alt="Свадебное фото на море">
         </picture>
     </div>
     <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
@@ -524,6 +396,9 @@
                 WEDDING DAY · 23.08.2026
             </div>
         </div>
+    </div>
+    <div class="hero-overlay">
+        <i class="fas fa-chevron-down" style="font-size: 24px; opacity: 0.7;"></i>
     </div>
 </section>
 
@@ -539,12 +414,13 @@
     </div>
 </div>
 
-<!-- Основной текст в карточке, как просили -->
 <div class="section">
     <div class="container">
-        <div class="story-card" data-aos="fade-up">
+        <h2 class="section-title" data-aos="fade-up">Дорогие наши</h2>
+        <div class="divider"></div>
+        <div class="story-centered" data-aos="fade-up">
             <p>Свершилось: мы решили стать семьёй!<br>И мы просто не можем сделать это по-тихому, без вас!</p>
-            <p>Собираем всех самых родных на наш главный праздник. С нас — вкусная еда и ледяное игристое, с вас — хорошее настроение и готовность зажигать</p>
+            <p>Собираем всех самых родных на наш главный праздник. С нас - вкусная еда и ледяное игристое, с вас - хорошее настроение и готовность зажигать</p>
             <p class="last-line">Ждём с нетерпением <span class="highlight-number">23</span> августа!</p>
         </div>
     </div>
@@ -578,7 +454,7 @@
             </div>
             <div class="venue-map">
                 <a href="https://yandex.ru/navi/org/usadba_tarasovo_village/180449201850?si=cd6kcu057jvctzk0abyj7w9a5w" target="_blank" rel="noopener noreferrer">
-                    <img src="https://placehold.co/600x400/eeded5/A1223A?text=Tarasovo+Village" alt="Усадьба Tarasovo Village">
+                    <img src="images/image-1.jpg" alt="Усадьба Tarasovo Village">
                 </a>
                 <p style="font-size: 0.7rem; text-align: center; margin-top: 8px;">
                     <a href="https://yandex.ru/navi/org/usadba_tarasovo_village/180449201850?si=cd6kcu057jvctzk0abyj7w9a5w" target="_blank" rel="noopener noreferrer" style="color: #A1223A;">
@@ -635,28 +511,28 @@
                     <div class="radio-group">
                         <label class="radio-option">
                             <input type="radio" name="attendance" value="yes"> 
-                            <span>Да, конечно!</span>
+                            <span>Да</span>
                         </label>
                         <label class="radio-option">
                             <input type="radio" name="attendance" value="no"> 
-                            <span>К сожалению, нет</span>
+                            <span>Нет</span>
                         </label>
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <div class="form-label">Какой алкоголь вы предпочитаете? (можно выбрать несколько вариантов)</div>
-                    <div class="checkbox-group">
-                        <label class="checkbox-option"><input type="checkbox" name="alcohol" value="вино"> <span>🍷 Вино</span></label>
-                        <label class="checkbox-option"><input type="checkbox" name="alcohol" value="шампанское"> <span>🥂 Шампанское</span></label>
-                        <label class="checkbox-option"><input type="checkbox" name="alcohol" value="виски"> <span>🥃 Виски</span></label>
-                        <label class="checkbox-option"><input type="checkbox" name="alcohol" value="коньяк"> <span>🥃 Коньяк</span></label>
-                        <label class="checkbox-option"><input type="checkbox" name="alcohol" value="водка"> <span>🍸 Водка</span></label>
+                    <div class="form-label">Какой алкоголь вы предпочитаете?</div>
+                    <div class="checkbox-group" style="flex-wrap: nowrap; overflow-x: auto; gap: 12px;">
+                        <label class="checkbox-option"><input type="checkbox" name="alcohol" value="вино"> <span>Вино</span></label>
+                        <label class="checkbox-option"><input type="checkbox" name="alcohol" value="шампанское"> <span>Шампанское</span></label>
+                        <label class="checkbox-option"><input type="checkbox" name="alcohol" value="виски"> <span>Виски</span></label>
+                        <label class="checkbox-option"><input type="checkbox" name="alcohol" value="коньяк"> <span>Коньяк</span></label>
+                        <label class="checkbox-option"><input type="checkbox" name="alcohol" value="водка"> <span>Водка</span></label>
                     </div>
                 </div>
                 
                 <button type="submit" id="submitRsvp">Отправить ответ <i class="fas fa-heart"></i></button>
-                <div id="rsvpMessage" style="text-align: center; margin-top: 18px; font-size: 0.9rem;"></div>
+                <div id="rsvpMessage" style="text-align: center; margin-top: 15px; font-size: 0.9rem;"></div>
             </form>
         </div>
     </div>
@@ -670,7 +546,7 @@
             <div class="detail-card">
                 <div class="detail-icon"><i class="fas fa-gift"></i></div>
                 <div class="detail-text">
-                    Цветы — прекрасный жест. Но они достаточно быстро вянут. Мы будем вам благодарны, если вместо букета вы подарите нам бутылочку своего любимого спиртного. А мы потом за ужином с этой бутылочкой будем вспоминать нашу свадьбу и вас.
+                    Цветы - прекрасный жест. Но они достаточно быстро вянут. Мы будем вам благодарны, если вместо букета вы подарите нам бутылочку своего любимого спиртного. А мы потом за ужином с этой бутылочкой будем вспоминать нашу свадьбу и вас.
                 </div>
             </div>
             <div class="detail-card">
