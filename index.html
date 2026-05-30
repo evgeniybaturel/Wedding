@@ -112,25 +112,27 @@
             margin-left: 35px;
         }
         
-        /* Дата WEDDING DAY сдвинута на 70px */
+        /* Дата WEDDING DAY - увеличен размер, сдвинута правее на 100px, цвет #666 */
         .hero-subtitle {
-            margin-top: 12px;
-            margin-left: 70px;
+            margin-top: 16px;
+            margin-left: 100px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
+            font-size: 1.1rem;
             font-weight: 500;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             color: #666;
         }
         
-        /* Адаптив для мобильных */
+        /* Адаптив для планшетов */
         @media (max-width: 768px) {
             .hero-names span:last-child {
                 margin-left: 25px;
             }
             .hero-subtitle {
-                margin-left: 50px;
+                margin-left: 70px;
+                font-size: 0.95rem;
+                letter-spacing: 1.5px;
             }
             .hero-content {
                 justify-content: flex-start;
@@ -171,17 +173,20 @@
             .footer p { font-size: 0.85rem; }
         }
         
+        /* Адаптив для телефонов */
         @media (max-width: 480px) {
             .hero-names span:last-child {
                 margin-left: 18px;
             }
             .hero-subtitle {
-                margin-left: 30px;
+                margin-left: 45px;
+                font-size: 0.8rem;
+                letter-spacing: 1px;
+                margin-top: 12px;
             }
             .section-title { font-size: 2.2rem; }
             .hero-content { padding-top: 30px; }
             .hero-names { font-size: 3rem; }
-            .hero-subtitle { font-size: 0.6rem; letter-spacing: 0.5px; margin-top: 6px; }
             
             .timer-label-text {
                 font-size: 1.2rem;
