@@ -84,7 +84,7 @@
             max-width: 1400px;
             margin: 0 auto;
             height: 100vh;
-            padding-top: 100px;
+            padding-top: 60px;
             padding-bottom: 40px;
         }
         
@@ -111,7 +111,6 @@
             50% { transform: translateY(10px); } 
         }
         
-        /* Новый стиль для hero надписи по центру */
         .hero-wedding-day {
             font-family: 'Montserrat', sans-serif;
             font-weight: 400;
@@ -132,11 +131,12 @@
             text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
         }
         
-        .hero-names span {
-            font-size: 3rem;
+        .hero-names i {
+            font-size: 2.5rem;
+            color: #5C1A2A;
         }
         
         .hero-divider {
@@ -161,11 +161,11 @@
             .section { padding: 40px 0; }
             .section-title { font-size: 2.5rem; }
             .divider { margin-bottom: 25px; }
-            .hero-content { padding: 15px 20px; padding-top: 80px; padding-bottom: 20px; }
+            .hero-content { padding: 15px 20px; padding-top: 40px; padding-bottom: 20px; }
             
-            .hero-wedding-day { font-size: 0.9rem; letter-spacing: 4px; }
-            .hero-names { font-size: 2.5rem; gap: 12px; }
-            .hero-names span { font-size: 2rem; }
+            .hero-wedding-day { font-size: 0.9rem; letter-spacing: 4px; margin-bottom: 15px; }
+            .hero-names { font-size: 2.5rem; gap: 10px; }
+            .hero-names i { font-size: 1.6rem; }
             .hero-divider { width: 40px; margin: 10px auto; }
             .hero-date { font-size: 0.8rem; letter-spacing: 3px; }
             
@@ -207,10 +207,11 @@
         
         @media (max-width: 480px) {
             .section-title { font-size: 2.2rem; }
-            .hero-wedding-day { font-size: 0.75rem; letter-spacing: 3px; }
+            .hero-content { padding-top: 30px; }
+            .hero-wedding-day { font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 10px; }
             .hero-names { font-size: 1.8rem; gap: 8px; }
-            .hero-names span { font-size: 1.5rem; }
-            .hero-divider { width: 30px; }
+            .hero-names i { font-size: 1.2rem; }
+            .hero-divider { width: 30px; margin: 8px auto; }
             .hero-date { font-size: 0.65rem; letter-spacing: 2px; }
             
             .timer-label-text {
@@ -385,7 +386,7 @@
         <div class="hero-top">
             <div class="hero-wedding-day">wedding day</div>
             <div class="hero-names">
-                Ира <span>❤️</span> Дима
+                Ира <i class="fas fa-heart"></i> Дима
             </div>
             <div class="hero-divider"></div>
             <div class="hero-date">23 . 08 . 2026</div>
