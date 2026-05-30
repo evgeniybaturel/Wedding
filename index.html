@@ -67,15 +67,9 @@
             pointer-events: none;
         }
         
+        /* Белая рамка УБРАНА */
         .hero::before {
-            content: "";
-            position: absolute;
-            top: 28px;
-            left: 28px;
-            right: 28px;
-            bottom: 28px;
-            border: 1px solid rgba(255,255,255,0.35);
-            z-index: 2;
+            content: none;
         }
 
         .hero-content {
@@ -96,7 +90,6 @@
             align-items: flex-start; 
         }
         
-        /* Имена: Ира и Дима - Дима сдвинут на 35px */
         .hero-names {
             display: flex;
             flex-direction: column;
@@ -112,7 +105,6 @@
             margin-left: 35px;
         }
         
-        /* Дата WEDDING DAY - увеличен размер, сдвинута правее на 100px, цвет #666 */
         .hero-subtitle {
             margin-top: 16px;
             margin-left: 100px;
@@ -124,7 +116,6 @@
             color: #666;
         }
         
-        /* Адаптив для планшетов */
         @media (max-width: 768px) {
             .hero-names span:last-child {
                 margin-left: 25px;
@@ -173,7 +164,6 @@
             .footer p { font-size: 0.85rem; }
         }
         
-        /* Адаптив для телефонов */
         @media (max-width: 480px) {
             .hero-names span:last-child {
                 margin-left: 18px;
