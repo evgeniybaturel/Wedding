@@ -18,7 +18,7 @@
         .section-title { font-family: 'Great Vibes', cursive; font-size: 4rem; font-weight: 400; text-align: center; color: #8B0000; margin-bottom: 20px; letter-spacing: 1px; }
         .divider { width: 80px; height: 2px; background: #8B0000; margin: 0 auto 40px; opacity: 0.5; }
         
-        /* Hero секция — компактная версия */
+        /* Hero секция */
         .hero {
             min-height: 100vh;
             position: relative;
@@ -103,7 +103,7 @@
         .wedding-day { font-family: 'Raleway', sans-serif; font-size: 1.2rem; letter-spacing: 6px; text-transform: uppercase; color: #000000; margin-top: -10px; margin-right: 5px; }
         .hero-date { font-family: 'Raleway', sans-serif; font-size: 1rem; letter-spacing: 3px; color: #000000; margin-top: 5px; margin-right: 5px; }
         
-        /* ===== МОБИЛЬНАЯ АДАПТАЦИЯ — МАКСИМАЛЬНО КОМПАКТНО ===== */
+        /* ===== МОБИЛЬНАЯ АДАПТАЦИЯ — МАКСИМАЛЬНО КОМПАКТНО + КАРТИНКА ПОЛНОСТЬЮ ===== */
         @media (max-width: 768px) {
             .section { padding: 40px 0; }
             .section-title { font-size: 2.5rem; }
@@ -111,102 +111,114 @@
             
             .hero-content { 
                 padding: 15px 20px; 
-                padding-top: 50px; 
+                padding-top: 30px; 
                 padding-bottom: 20px;
             }
             
-            /* Сильно уменьшаем имена */
+            /* Фото — делаем так, чтобы было видно полностью */
+            .hero-parallax-bg img {
+                object-fit: contain; /* Вместо cover — картинка целиком */
+                background-color: #000; /* Чёрные полосы по бокам, если нужно */
+                object-position: 50% 50%;
+            }
+            
+            /* Имена — сильно уменьшаем и поднимаем выше */
             .name-ira, .name-dima { 
-                font-size: 2.8rem; 
+                font-size: 2rem; 
             }
             .name-dima { 
-                margin-right: 12px; 
-                margin-top: -8px;
+                margin-right: 8px; 
+                margin-top: -6px;
             }
             
             .wedding-day { 
-                font-size: 0.75rem; 
-                letter-spacing: 2px; 
-                margin-top: -5px;
-                margin-right: 3px;
+                font-size: 0.6rem; 
+                letter-spacing: 1.5px; 
+                margin-top: -2px;
+                margin-right: 2px;
             }
             
             .hero-date { 
-                font-size: 0.7rem; 
+                font-size: 0.55rem; 
                 letter-spacing: 1px; 
-                margin-top: 3px;
-                margin-right: 3px;
+                margin-top: 2px;
+                margin-right: 2px;
             }
             
-            /* Поднимаем контейнер выше, чтобы не налезало на лицо */
+            /* Контейнер имён — поднят высоко, чтобы не налезало */
             .names-container {
-                margin-top: -60px;
-                margin-right: 10px;
+                margin-top: -100px;
+                margin-right: 5px;
             }
             
-            /* Фото — фокус чуть ниже для мобильных */
-            .hero-parallax-bg img {
-                object-position: 50% 35%;
-            }
-            
-            /* Уменьшаем таймер */
-            .timer-block { padding: 10px 15px; min-width: 70px; }
-            .timer-number { font-size: 1.5rem; }
-            .timer-label { font-size: 0.65rem; }
+            /* Таймер */
+            .timer-block { padding: 8px 12px; min-width: 60px; }
+            .timer-number { font-size: 1.3rem; }
+            .timer-label { font-size: 0.55rem; }
+            .timer-wrapper { gap: 15px; }
             
             /* Карточки программы */
-            .event-card { padding: 20px 15px; }
-            .event-card h3 { font-size: 1.6rem; }
-            .event-icon { font-size: 2rem; margin-bottom: 15px; }
-            .event-time { font-size: 0.9rem; }
-            .event-address { font-size: 0.75rem; }
+            .event-card { padding: 15px 12px; }
+            .event-card h3 { font-size: 1.4rem; }
+            .event-icon { font-size: 1.8rem; margin-bottom: 10px; }
+            .event-time { font-size: 0.8rem; }
+            .event-address { font-size: 0.7rem; }
             
             /* Место проведения */
-            .venue-box { padding: 25px; gap: 20px; }
-            .venue-info h3 { font-size: 1.6rem; }
-            .venue-info p { font-size: 0.9rem; }
-            .venue-map img { border-radius: 15px; }
-            
-            /* Форма */
-            .rsvp-box { padding: 25px; }
-            .form-label { font-size: 0.9rem; }
-            .radio-option span, .checkbox-option span { font-size: 0.8rem; }
-            .radio-group, .checkbox-group { gap: 12px; }
-            button { padding: 12px 20px; font-size: 0.9rem; }
-            
-            /* Подарки */
-            .gift-note { font-size: 0.9rem; }
-            
-            /* Футер */
-            .footer { padding: 25px 15px; }
-            .footer p { font-size: 0.85rem; }
-        }
-        
-        /* Очень маленькие телефоны (iPhone SE, 375px и меньше) */
-        @media (max-width: 480px) {
-            .section-title { font-size: 2.2rem; }
-            .name-ira, .name-dima { font-size: 2.2rem; }
-            .name-dima { margin-right: 8px; }
-            .wedding-day { font-size: 0.65rem; letter-spacing: 1.5px; }
-            .hero-date { font-size: 0.6rem; }
-            .names-container { margin-top: -70px; margin-right: 5px; }
-            
-            .timer-block { padding: 6px 10px; min-width: 55px; }
-            .timer-number { font-size: 1.2rem; }
-            .timer-label { font-size: 0.55rem; }
-            
-            .event-card h3 { font-size: 1.3rem; }
-            .event-icon { font-size: 1.6rem; }
-            .event-time { font-size: 0.8rem; }
-            
+            .venue-box { padding: 20px; gap: 15px; }
             .venue-info h3 { font-size: 1.4rem; }
             .venue-info p { font-size: 0.8rem; }
+            .venue-map img { border-radius: 12px; }
             
+            /* Форма */
+            .rsvp-box { padding: 20px; }
+            .form-label { font-size: 0.85rem; }
             .radio-option span, .checkbox-option span { font-size: 0.7rem; }
-            .radio-group, .checkbox-group { gap: 8px; }
+            .radio-group, .checkbox-group { gap: 10px; }
+            .radio-option input, .checkbox-option input { width: 16px; height: 16px; }
+            input[type="text"] { padding: 10px 15px; font-size: 0.85rem; }
+            button { padding: 10px 15px; font-size: 0.85rem; }
+            
+            /* Подарки */
+            .gift-note { font-size: 0.85rem; }
+            
+            /* Футер */
+            .footer { padding: 20px 15px; }
+            .footer p { font-size: 0.8rem; }
         }
         
-        /* Остальные стили без изменений */
+        /* Очень маленькие телефоны (iPhone SE, 375px и меньше) — ЕЩЁ МЕНЬШЕ */
+        @media (max-width: 480px) {
+            .section-title { font-size: 2rem; }
+            
+            .name-ira, .name-dima { font-size: 1.6rem; }
+            .name-dima { margin-right: 5px; margin-top: -4px; }
+            .wedding-day { font-size: 0.5rem; letter-spacing: 1px; }
+            .hero-date { font-size: 0.45rem; }
+            .names-container { margin-top: -120px; margin-right: 3px; }
+            
+            .timer-block { padding: 5px 8px; min-width: 45px; }
+            .timer-number { font-size: 1rem; }
+            .timer-label { font-size: 0.45rem; }
+            .timer-wrapper { gap: 10px; }
+            
+            .event-card h3 { font-size: 1.2rem; }
+            .event-icon { font-size: 1.4rem; }
+            .event-time { font-size: 0.7rem; }
+            .event-address { font-size: 0.6rem; }
+            
+            .venue-info h3 { font-size: 1.2rem; }
+            .venue-info p { font-size: 0.7rem; }
+            
+            .form-label { font-size: 0.75rem; }
+            .radio-option span, .checkbox-option span { font-size: 0.6rem; }
+            .radio-group, .checkbox-group { gap: 6px; }
+            .radio-option input, .checkbox-option input { width: 14px; height: 14px; }
+            input[type="text"] { padding: 8px 12px; font-size: 0.75rem; }
+            button { padding: 8px 12px; font-size: 0.75rem; }
+        }
+        
+        /* Остальные стили (таймер, карточки, venue и т.д.) без изменений */
         .timer-section { background: #FFFFFF; padding: 30px 0; border-top: 1px solid #f0e0d8; border-bottom: 1px solid #f0e0d8; }
         .timer-wrapper { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
         .timer-block { text-align: center; background: #FFFFFF; padding: 15px 25px; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); min-width: 100px; border: 1px solid #f0e0d8; }
@@ -461,7 +473,6 @@
     });
     updateParallax();
 
-    // ==== НАСТРОЙКА GOOGLE SHEETS ====
     const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzKDzutfQpD27SLN25pwrypzX-i8_v169malcK2MahcRAkAs-cBoV5xWN6TsXT6RW1dbQ/exec';
     
     const rsvpForm = document.getElementById('rsvpForm');
