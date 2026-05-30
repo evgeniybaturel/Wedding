@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        /* ... (весь ваш CSS остаётся без изменений) ... */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Raleway', sans-serif; background-color: #FFFFFF; color: #000000; line-height: 1.6; }
         ::-webkit-scrollbar { width: 8px; }
@@ -18,28 +17,137 @@
         .section { padding: 80px 0; }
         .section-title { font-family: 'Great Vibes', cursive; font-size: 4rem; font-weight: 400; text-align: center; color: #8B0000; margin-bottom: 20px; letter-spacing: 1px; }
         .divider { width: 80px; height: 2px; background: #8B0000; margin: 0 auto 40px; opacity: 0.5; }
-        .hero { min-height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; color: white; overflow: hidden; transform: translateZ(0); }
-        .hero-parallax-bg { position: absolute; top: -10%; left: 0; width: 100%; height: 120%; z-index: 1; will-change: transform; transition: transform 0.05s linear; }
-        .hero-parallax-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
-        .hero::after { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)); z-index: 2; pointer-events: none; }
-        .hero-content { position: relative; z-index: 3; padding: 30px 40px; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; width: 100%; max-width: 1400px; margin: 0 auto; height: 100vh; padding-top: 80px; padding-bottom: 40px; }
+        
+        /* Hero секция — исправлено для мобильных */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+            transform: translateZ(0);
+        }
+        
+        .hero-parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            will-change: transform;
+            transform: translateY(0);
+        }
+        
+        .hero-parallax-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 50% 40%; /* Фокус на лицо (40% сверху) — подберите под своё фото */
+            display: block;
+        }
+        
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));
+            z-index: 2;
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            padding: 30px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            height: 100vh;
+            padding-top: 80px;
+            padding-bottom: 40px;
+        }
+        
         .hero-top { display: flex; flex-direction: column; align-items: flex-end; width: 100%; }
         .hero-overlay { position: absolute; bottom: 30px; left: 0; right: 0; text-align: center; animation: bounce 2s infinite; z-index: 3; color: white; }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
-        .names-container { display: flex; flex-direction: column; align-items: flex-end; width: 100%; margin-top: -20px; margin-right: 30px; }
-        .name-ira, .name-dima { font-family: 'Great Vibes', cursive; font-size: 5.5rem; font-weight: 400; color: #8B0000; line-height: 1.1; text-shadow: 2px 2px 15px rgba(0,0,0,0.5); }
+        
+        .names-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            width: 100%;
+            margin-top: -20px;
+            margin-right: 30px;
+        }
+        
+        .name-ira, .name-dima {
+            font-family: 'Great Vibes', cursive;
+            font-size: 5.5rem;
+            font-weight: 400;
+            color: #8B0000;
+            line-height: 1.1;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.5);
+        }
         .name-dima { margin-right: 25px; margin-top: -15px; }
         .wedding-day { font-family: 'Raleway', sans-serif; font-size: 1.2rem; letter-spacing: 6px; text-transform: uppercase; color: #000000; margin-top: -10px; margin-right: 5px; }
         .hero-date { font-family: 'Raleway', sans-serif; font-size: 1rem; letter-spacing: 3px; color: #000000; margin-top: 5px; margin-right: 5px; }
+        
+        /* Мобильная адаптация hero */
         @media (max-width: 768px) {
             .section { padding: 50px 0; }
             .section-title { font-size: 3rem; }
-            .name-ira, .name-dima { font-size: 3.5rem; }
-            .name-dima { margin-right: 18px; }
-            .wedding-day { font-size: 0.9rem; letter-spacing: 3px; }
-            .hero-date { font-size: 0.8rem; letter-spacing: 2px; }
             .hero-content { padding: 20px; padding-top: 60px; padding-bottom: 30px; }
+            
+            /* Уменьшаем имена на мобильных */
+            .name-ira, .name-dima { font-size: 3.5rem; }
+            .name-dima { margin-right: 18px; margin-top: -10px; }
+            .wedding-day { font-size: 0.9rem; letter-spacing: 3px; margin-top: -5px; }
+            .hero-date { font-size: 0.8rem; letter-spacing: 2px; }
+            
+            /* Сдвигаем контейнер с именами, чтобы не налезало на лицо */
+            .names-container {
+                margin-top: -40px;  /* поднимаем выше */
+                margin-right: 15px;
+            }
+            
+            /* Фото фиксируем на лице */
+            .hero-parallax-bg img {
+                object-position: 50% 35%; /* корректируем фокус на мобильных */
+            }
         }
+        
+        @media (max-width: 480px) {
+            .timer-block { padding: 10px 15px; min-width: 70px; }
+            .timer-number { font-size: 1.5rem; }
+            .timer-label { font-size: 0.65rem; }
+            .event-card h3 { font-size: 1.6rem; }
+            .venue-info h3 { font-size: 1.6rem; }
+            .rsvp-box { padding: 25px; }
+            .section-title { font-size: 2.5rem; }
+            
+            /* Ещё сильнее уменьшаем имена на очень маленьких экранах */
+            .name-ira, .name-dima { font-size: 2.5rem; }
+            .name-dima { margin-right: 12px; }
+            .wedding-day { font-size: 0.7rem; letter-spacing: 2px; }
+            .hero-date { font-size: 0.65rem; letter-spacing: 1px; }
+            .names-container { margin-top: -50px; margin-right: 10px; }
+            
+            .radio-group, .checkbox-group { gap: 12px; }
+            .radio-option span, .checkbox-option span { font-size: 0.85rem; }
+        }
+        
+        /* Остальные стили без изменений */
         .timer-section { background: #FFFFFF; padding: 30px 0; border-top: 1px solid #f0e0d8; border-bottom: 1px solid #f0e0d8; }
         .timer-wrapper { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
         .timer-block { text-align: center; background: #FFFFFF; padding: 15px 25px; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); min-width: 100px; border: 1px solid #f0e0d8; }
@@ -79,21 +187,6 @@
         .gift-note { max-width: 600px; margin: 0 auto; font-size: 1rem; color: #333; }
         .footer { background: #8B0000; color: #f0d8d8; text-align: center; padding: 40px 20px; }
         #confetti-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999; }
-        @media (max-width: 480px) {
-            .timer-block { padding: 10px 15px; min-width: 70px; }
-            .timer-number { font-size: 1.5rem; }
-            .timer-label { font-size: 0.65rem; }
-            .event-card h3 { font-size: 1.6rem; }
-            .venue-info h3 { font-size: 1.6rem; }
-            .rsvp-box { padding: 25px; }
-            .section-title { font-size: 2.5rem; }
-            .name-ira, .name-dima { font-size: 2.5rem; }
-            .name-dima { margin-right: 12px; }
-            .wedding-day { font-size: 0.7rem; letter-spacing: 2px; }
-            .hero-date { font-size: 0.65rem; letter-spacing: 1px; }
-            .radio-group, .checkbox-group { gap: 12px; }
-            .radio-option span, .checkbox-option span { font-size: 0.85rem; }
-        }
     </style>
 </head>
 <body>
@@ -299,7 +392,6 @@
         const speed = 0.25;
         const yOffset = scrollPosition * speed;
         parallaxBg.style.transform = `translateY(${yOffset}px)`;
-        parallaxBg.style.webkitTransform = `translateY(${yOffset}px)`;
         ticking = false;
     }
     window.addEventListener('scroll', function() {
@@ -380,7 +472,6 @@
             msgDiv.style.color = '#8B0000';
             submitBtn.innerHTML = 'Отправлено ✅';
             
-            // Безопасный запуск конфетти
             if (typeof canvasConfetti === 'function') {
                 canvasConfetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#8B0000', '#B22222', '#f5e6d3'] });
                 setTimeout(() => canvasConfetti({ particleCount: 100, spread: 100, origin: { y: 0.5, x: 0.3 }, startVelocity: 15 }), 200);
