@@ -96,7 +96,7 @@
             align-items: flex-start; 
         }
         
-        /* Имена: Ира и Дима с нужным отступом */
+        /* Имена: Ира и Дима - Дима сдвинут на 35px */
         .hero-names {
             display: flex;
             flex-direction: column;
@@ -108,27 +108,14 @@
             color: #8b1830;
         }
         
-        /* Сдвигаем имя "Дима" от левого края - добавляем margin-left */
         .hero-names span:last-child {
-            margin-left: 35px;  /* Дима смещается вправо относительно Иры */
+            margin-left: 35px;
         }
         
-        /* Для мобильных: сохраняем смещение, но чуть уменьшаем */
-        @media (max-width: 768px) {
-            .hero-names span:last-child {
-                margin-left: 25px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero-names span:last-child {
-                margin-left: 18px;
-            }
-        }
-
-        /* Уменьшенный и более плотный сабтайтл (WEDDING DAY) */
+        /* Дата WEDDING DAY сдвинута на 70px */
         .hero-subtitle {
             margin-top: 12px;
+            margin-left: 70px;
             font-family: 'Montserrat', sans-serif;
             font-size: 0.85rem;
             font-weight: 500;
@@ -136,26 +123,15 @@
             text-transform: uppercase;
             color: #666;
         }
-                
-        .hero-divider {
-            width: 80px;
-            height: 2px;
-            background: #A1223A;
-            margin: 10px auto;
-            opacity: 0.7;
-        }
         
-        .hero-date {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 400;
-            font-size: 1.2rem;
-            letter-spacing: 4px;
-            color: #A1223A;
-            margin-top: 8px;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
-        }
-        
+        /* Адаптив для мобильных */
         @media (max-width: 768px) {
+            .hero-names span:last-child {
+                margin-left: 25px;
+            }
+            .hero-subtitle {
+                margin-left: 50px;
+            }
             .hero-content {
                 justify-content: flex-start;
                 padding-top: 40px;
@@ -166,12 +142,7 @@
             .section-title { font-size: 2.5rem; }
             .divider { margin-bottom: 25px; }
             
-            .hero-wedding-day { font-size: 0.9rem; letter-spacing: 4px; margin-bottom: 8px; }
-            .hero-names { font-size: 4.5rem; gap: 12px; }
-            .hero-names i { font-size: 2.2rem; }
-            .hero-divider { width: 50px; margin: 8px auto; }
-            .hero-date { font-size: 0.9rem; letter-spacing: 3px; margin-top: 6px; }
-            .hero-subtitle { font-size: 0.7rem; letter-spacing: 1px; margin-top: 8px; }
+            .hero-names { font-size: 4.5rem; }
             
             .timer-label-text {
                 font-size: 1.4rem;
@@ -201,13 +172,15 @@
         }
         
         @media (max-width: 480px) {
+            .hero-names span:last-child {
+                margin-left: 18px;
+            }
+            .hero-subtitle {
+                margin-left: 30px;
+            }
             .section-title { font-size: 2.2rem; }
             .hero-content { padding-top: 30px; }
-            .hero-wedding-day { font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 6px; }
-            .hero-names { font-size: 3rem; gap: 8px; }
-            .hero-names i { font-size: 1.5rem; }
-            .hero-divider { width: 40px; margin: 6px auto; }
-            .hero-date { font-size: 0.75rem; letter-spacing: 2px; margin-top: 5px; }
+            .hero-names { font-size: 3rem; }
             .hero-subtitle { font-size: 0.6rem; letter-spacing: 0.5px; margin-top: 6px; }
             
             .timer-label-text {
@@ -269,7 +242,6 @@
             color: #555;
         }
         
-        /* Стили для блока "О месте проведения" */
         .venue-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.8rem;
@@ -395,12 +367,10 @@
     </div>
     <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
         <div class="hero-top">
-            <!-- Имена Ира и Дима: Дима смещен от левого края (добавлен margin-left в CSS) -->
             <div class="hero-names">
                 <span>Ира</span>
                 <span>Дима</span>
             </div>
-            <!-- Измененный сабтайтл: уменьшен размер шрифта и межбуквенный интервал -->
             <div class="hero-subtitle">
                 WEDDING DAY · 23.08.2026
             </div>
@@ -435,7 +405,6 @@
     </div>
 </div>
 
-<!-- О месте проведения -->
 <div class="section" style="background: #FFFFFF;">
     <div class="container">
         <h2 class="section-title" data-aos="fade-up">Место встречи</h2>
@@ -468,7 +437,6 @@
     </div>
 </div>
 
-<!-- Программа дня -->
 <div class="section" style="background: #FFFFFF;">
     <div class="container">
         <h2 class="section-title" data-aos="fade-up">Программа дня</h2>
@@ -502,7 +470,6 @@
     </div>
 </div>
 
-<!-- RSVP форма -->
 <div class="section" id="rsvp">
     <div class="container">
         <h2 class="section-title" data-aos="fade-up">Подтвердите присутствие</h2>
