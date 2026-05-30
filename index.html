@@ -87,8 +87,7 @@
             align-items: flex-start;
             justify-content: flex-start;
             padding-top: 70px;
-            /* Увеличиваем отступ слева, чтобы сместить весь блок правее */
-            padding-left: 120px;
+            padding-left: 35px;
         }
         
         .hero-top { 
@@ -97,33 +96,7 @@
             align-items: flex-start; 
         }
         
-        .hero-overlay { 
-            position: absolute; 
-            bottom: 30px; 
-            left: 0; 
-            right: 0; 
-            text-align: center; 
-            animation: bounce 2s infinite; 
-            z-index: 3; 
-            color: white; 
-        }
-        
-        @keyframes bounce { 
-            0%, 100% { transform: translateY(0); } 
-            50% { transform: translateY(10px); } 
-        }
-        
-        .hero-wedding-day {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 400;
-            font-size: 1.2rem;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            color: #A1223A;
-            margin-bottom: 10px;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
-        }
-        
+        /* Имена: Ира и Дима с нужным отступом */
         .hero-names {
             display: flex;
             flex-direction: column;
@@ -134,8 +107,26 @@
             line-height: 0.85;
             color: #8b1830;
         }
+        
+        /* Сдвигаем имя "Дима" от левого края - добавляем margin-left */
+        .hero-names span:last-child {
+            margin-left: 35px;  /* Дима смещается вправо относительно Иры */
+        }
+        
+        /* Для мобильных: сохраняем смещение, но чуть уменьшаем */
+        @media (max-width: 768px) {
+            .hero-names span:last-child {
+                margin-left: 25px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-names span:last-child {
+                margin-left: 18px;
+            }
+        }
 
-        /* Уменьшенный и более плотный сабтайтл (WEDDING DAY), теперь тоже смещен вместе с родителем */
+        /* Уменьшенный и более плотный сабтайтл (WEDDING DAY) */
         .hero-subtitle {
             margin-top: 12px;
             font-family: 'Montserrat', sans-serif;
@@ -164,12 +155,13 @@
             text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
         }
         
-        /* Адаптивность для планшетов и мобильных — уменьшаем смещение, чтобы не уезжало за край */
         @media (max-width: 768px) {
             .hero-content {
-                padding-left: 40px;  /* на планшетах отступ меньше, но все равно правее чем было */
+                justify-content: flex-start;
                 padding-top: 40px;
+                padding-bottom: 20px;
             }
+            
             .section { padding: 40px 0; }
             .section-title { font-size: 2.5rem; }
             .divider { margin-bottom: 25px; }
@@ -209,11 +201,8 @@
         }
         
         @media (max-width: 480px) {
-            .hero-content {
-                padding-left: 25px;  /* на узких экранах отступ минимальный, но все же не впритык */
-                padding-top: 30px;
-            }
             .section-title { font-size: 2.2rem; }
+            .hero-content { padding-top: 30px; }
             .hero-wedding-day { font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 6px; }
             .hero-names { font-size: 3rem; gap: 8px; }
             .hero-names i { font-size: 1.5rem; }
@@ -406,12 +395,12 @@
     </div>
     <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
         <div class="hero-top">
-            <!-- Имена Ира и Дима жирные + вся группа сдвинута правей за счет padding-left родителя -->
+            <!-- Имена Ира и Дима: Дима смещен от левого края (добавлен margin-left в CSS) -->
             <div class="hero-names">
                 <span>Ира</span>
                 <span>Дима</span>
             </div>
-            <!-- Подпись WEDDING DAY также сдвинута вместе с блоком, отступ от левого края увеличен -->
+            <!-- Измененный сабтайтл: уменьшен размер шрифта и межбуквенный интервал -->
             <div class="hero-subtitle">
                 WEDDING DAY · 23.08.2026
             </div>
