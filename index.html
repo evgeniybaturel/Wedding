@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>Свадебное приглашение | Ира & Дима</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Montserrat + Raleway -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Great Vibes для заголовков секций -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
@@ -12,11 +15,21 @@
         body { font-family: 'Raleway', sans-serif; background-color: #FFFFFF; color: #000000; line-height: 1.6; }
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #f0e4dc; }
-        ::-webkit-scrollbar-thumb { background: #8B0000; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: #8B3E4B; border-radius: 4px; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .section { padding: 80px 0; }
-        .section-title { font-family: 'Great Vibes', cursive; font-size: 4rem; font-weight: 400; text-align: center; color: #8B0000; margin-bottom: 20px; letter-spacing: 1px; }
-        .divider { width: 80px; height: 2px; background: #8B0000; margin: 0 auto 40px; opacity: 0.5; }
+        
+        /* Заголовки секций — Great Vibes, бордовый */
+        .section-title { 
+            font-family: 'Great Vibes', cursive; 
+            font-size: 4rem; 
+            font-weight: 400; 
+            text-align: center; 
+            color: #8B3E4B; 
+            margin-bottom: 20px; 
+            letter-spacing: 1px; 
+        }
+        .divider { width: 80px; height: 2px; background: #8B3E4B; margin: 0 auto 40px; opacity: 0.5; }
         
         /* Hero секция */
         .hero {
@@ -83,6 +96,7 @@
         .hero-overlay { position: absolute; bottom: 30px; left: 0; right: 0; text-align: center; animation: bounce 2s infinite; z-index: 3; color: white; }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
         
+        /* Имена — Montserrat ExtraLight, широкий интервал, бордовый */
         .names-container {
             display: flex;
             flex-direction: column;
@@ -93,16 +107,44 @@
         }
         
         .name-ira, .name-dima {
-            font-family: 'Great Vibes', cursive;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 200;  /* ExtraLight */
             font-size: 5.5rem;
-            font-weight: 400;
-            color: #8B0000;
+            color: #8B3E4B;
             line-height: 1.1;
-            text-shadow: 2px 2px 15px rgba(0,0,0,0.5);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.3);
         }
-        .name-dima { margin-right: 25px; margin-top: -15px; }
-        .wedding-day { font-family: 'Raleway', sans-serif; font-size: 1.2rem; letter-spacing: 6px; text-transform: uppercase; color: #000000; margin-top: -10px; margin-right: 5px; }
-        .hero-date { font-family: 'Raleway', sans-serif; font-size: 1rem; letter-spacing: 3px; color: #000000; margin-top: 5px; margin-right: 5px; }
+        .name-dima { 
+            margin-right: 25px; 
+            margin-top: -15px;
+            letter-spacing: 10px;
+        }
+        
+        /* Wedding day и дата — Montserrat Medium, тёмно-серый */
+        .wedding-day { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 500;  /* Medium */
+            font-size: 1.2rem; 
+            letter-spacing: 6px; 
+            text-transform: uppercase; 
+            color: #4A4646; 
+            margin-top: -10px; 
+            margin-right: 5px; 
+            text-shadow: none;
+        }
+        
+        .hero-date { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 500;  /* Medium */
+            font-size: 1rem; 
+            letter-spacing: 3px; 
+            color: #4A4646; 
+            margin-top: 5px; 
+            margin-right: 5px; 
+            text-shadow: none;
+        }
         
         /* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
         @media (max-width: 768px) {
@@ -116,55 +158,51 @@
                 padding-bottom: 20px;
             }
             
-            /* Увеличиваем имена */
             .name-ira, .name-dima { 
-                font-size: 3.5rem; 
+                font-size: 3rem; 
+                letter-spacing: 5px;
             }
             .name-dima { 
                 margin-right: 12px; 
                 margin-top: -10px;
+                letter-spacing: 7px;
             }
             
             .wedding-day { 
-                font-size: 0.8rem; 
-                letter-spacing: 2.5px; 
+                font-size: 0.75rem; 
+                letter-spacing: 3px; 
                 margin-top: -5px;
                 margin-right: 3px;
             }
             
             .hero-date { 
-                font-size: 0.7rem; 
-                letter-spacing: 1.5px; 
+                font-size: 0.65rem; 
+                letter-spacing: 2px; 
                 margin-top: 3px;
                 margin-right: 3px;
             }
             
-            /* Контейнер с надписью */
             .names-container {
                 margin-top: 20px;
                 margin-right: 10px;
             }
             
-            /* Таймер */
             .timer-block { padding: 10px 15px; min-width: 70px; }
             .timer-number { font-size: 1.5rem; }
             .timer-label { font-size: 0.65rem; }
             .timer-wrapper { gap: 15px; }
             
-            /* Карточки программы */
             .event-card { padding: 20px 15px; }
             .event-card h3 { font-size: 1.6rem; }
             .event-icon { font-size: 2rem; margin-bottom: 15px; }
             .event-time { font-size: 0.9rem; }
             .event-address { font-size: 0.75rem; }
             
-            /* Место проведения */
             .venue-box { padding: 25px; gap: 20px; }
             .venue-info h3 { font-size: 1.6rem; }
             .venue-info p { font-size: 0.9rem; }
             .venue-map img { border-radius: 15px; }
             
-            /* Форма */
             .rsvp-box { padding: 25px; }
             .form-label { font-size: 0.9rem; }
             .radio-option span, .checkbox-option span { font-size: 0.8rem; }
@@ -176,15 +214,19 @@
             .footer p { font-size: 0.85rem; }
         }
         
-        /* Очень маленькие телефоны */
         @media (max-width: 480px) {
             .section-title { font-size: 2.2rem; }
-            
-            /* Ещё увеличиваем имена для маленьких экранов */
-            .name-ira, .name-dima { font-size: 3rem; }
-            .name-dima { margin-right: 10px; margin-top: -8px; }
-            .wedding-day { font-size: 0.75rem; letter-spacing: 2px; }
-            .hero-date { font-size: 0.65rem; }
+            .name-ira, .name-dima { 
+                font-size: 2.2rem; 
+                letter-spacing: 4px;
+            }
+            .name-dima { 
+                margin-right: 10px; 
+                margin-top: -8px;
+                letter-spacing: 5px;
+            }
+            .wedding-day { font-size: 0.65rem; letter-spacing: 2px; }
+            .hero-date { font-size: 0.55rem; letter-spacing: 1.5px; }
             .names-container { margin-top: 15px; margin-right: 8px; }
             
             .timer-block { padding: 6px 10px; min-width: 55px; }
@@ -206,7 +248,7 @@
         .timer-section { background: #FFFFFF; padding: 30px 0; border-top: 1px solid #f0e0d8; border-bottom: 1px solid #f0e0d8; }
         .timer-wrapper { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
         .timer-block { text-align: center; background: #FFFFFF; padding: 15px 25px; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); min-width: 100px; border: 1px solid #f0e0d8; }
-        .timer-number { font-size: 2.2rem; font-weight: 700; color: #8B0000; font-family: 'Raleway', sans-serif; }
+        .timer-number { font-size: 2.2rem; font-weight: 700; color: #8B3E4B; font-family: 'Montserrat', sans-serif; }
         .timer-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: #555; }
         .story-centered { max-width: 800px; margin: 0 auto; text-align: center; }
         .story-centered p { margin-bottom: 20px; font-size: 1rem; color: #000000; text-align: center; }
@@ -214,15 +256,15 @@
         .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; margin-top: 20px; }
         .event-card { background: white; border-radius: 24px; padding: 30px 20px; text-align: center; transition: all 0.3s ease; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid #f0e0d8; }
         .event-card:hover { transform: translateY(-8px); box-shadow: 0 20px 35px rgba(0,0,0,0.1); }
-        .event-icon { font-size: 2.5rem; color: #8B0000; margin-bottom: 20px; }
-        .event-card h3 { font-family: 'Great Vibes', cursive; font-size: 2rem; font-weight: 400; color: #8B0000; margin-bottom: 12px; }
+        .event-icon { font-size: 2.5rem; color: #8B3E4B; margin-bottom: 20px; }
+        .event-card h3 { font-family: 'Great Vibes', cursive; font-size: 2rem; font-weight: 400; color: #8B3E4B; margin-bottom: 12px; }
         .event-time { font-weight: 600; margin-bottom: 8px; color: #555; }
         .event-address { font-size: 0.85rem; color: #666; }
         .venue-box { background: white; border-radius: 30px; padding: 40px; margin-top: 30px; display: flex; flex-wrap: wrap; gap: 30px; align-items: center; box-shadow: 0 15px 35px rgba(0,0,0,0.05); border: 1px solid #f0e0d8; }
         .venue-info { flex: 2; }
-        .venue-info h3 { font-family: 'Great Vibes', cursive; font-size: 2rem; font-weight: 400; color: #8B0000; margin-bottom: 15px; }
+        .venue-info h3 { font-family: 'Great Vibes', cursive; font-size: 2rem; font-weight: 400; color: #8B3E4B; margin-bottom: 15px; }
         .venue-info p { margin-bottom: 12px; font-size: 1rem; color: #000000; }
-        .venue-info i { color: #8B0000; width: 28px; margin-right: 8px; }
+        .venue-info i { color: #8B3E4B; width: 28px; margin-right: 8px; }
         .venue-map { flex: 1.2; min-width: 200px; }
         .venue-map img { width: 100%; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
         @media (max-width: 768px) { .venue-box { flex-direction: column; text-align: center; } .venue-info i { margin-right: 5px; } }
@@ -231,16 +273,16 @@
         .form-label { font-family: 'Raleway', sans-serif; font-size: 1rem; font-weight: 500; color: #000000; margin-bottom: 8px; display: block; }
         .radio-group, .checkbox-group { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 10px; }
         .radio-option, .checkbox-option { display: flex; align-items: center; gap: 8px; cursor: pointer; }
-        .radio-option input, .checkbox-option input { width: 18px; height: 18px; cursor: pointer; accent-color: #8B0000; margin: 0; }
+        .radio-option input, .checkbox-option input { width: 18px; height: 18px; cursor: pointer; accent-color: #8B3E4B; margin: 0; }
         .radio-option span, .checkbox-option span { font-family: 'Raleway', sans-serif; font-size: 0.95rem; color: #000000; }
         input[type="text"] { width: 100%; padding: 14px 20px; border: 1px solid #e0d0c8; border-radius: 50px; font-family: 'Raleway', sans-serif; font-size: 1rem; background: #FFFFFF; }
-        input[type="text"]:focus { outline: none; border-color: #8B0000; box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1); }
-        button { background: #8B0000; color: white; border: none; padding: 14px 35px; font-size: 1rem; font-weight: 600; border-radius: 50px; cursor: pointer; width: 100%; transition: transform 0.2s, box-shadow 0.2s; }
-        button:hover { background: #6B0000; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(139, 0, 0, 0.3); }
+        input[type="text"]:focus { outline: none; border-color: #8B3E4B; box-shadow: 0 0 0 3px rgba(139, 62, 75, 0.1); }
+        button { background: #8B3E4B; color: white; border: none; padding: 14px 35px; font-size: 1rem; font-weight: 600; border-radius: 50px; cursor: pointer; width: 100%; transition: transform 0.2s, box-shadow 0.2s; }
+        button:hover { background: #6B2E3A; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(139, 62, 75, 0.3); }
         button:disabled { opacity: 0.6; transform: none; cursor: not-allowed; }
         .gift-section { background: #FFFFFF; text-align: center; border-top: 1px solid #f0e0d8; border-bottom: 1px solid #f0e0d8; }
         .gift-note { max-width: 600px; margin: 0 auto; font-size: 1rem; color: #333; }
-        .footer { background: #8B0000; color: #f0d8d8; text-align: center; padding: 40px 20px; }
+        .footer { background: #8B3E4B; color: #f0d8d8; text-align: center; padding: 40px 20px; }
         #confetti-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999; }
     </style>
 </head>
@@ -252,9 +294,7 @@
 <section class="hero">
     <div class="hero-parallax-bg" id="parallaxBg">
         <picture>
-            <!-- Мобильная версия (до 768px) -->
             <source media="(max-width: 768px)" srcset="images/image-3-mobile.png">
-            <!-- Десктопная версия (по умолчанию) -->
             <img src="images/image-3.png" alt="Свадебное фото на море">
         </picture>
     </div>
@@ -264,7 +304,7 @@
                 <div class="name-ira">Ира</div>
                 <div class="name-dima">Дима</div>
                 <div class="wedding-day">wedding day</div>
-                <div class="hero-date">26 Июля 2026</div>
+                <div class="hero-date">23 Августа 2026</div>
             </div>
         </div>   
     </div>
@@ -403,7 +443,7 @@
         <h2 class="section-title" data-aos="fade-up">Пожелания и подарки</h2>
         <div class="divider"></div>
         <div class="gift-note" data-aos="fade-up">
-            <i class="fas fa-gift" style="font-size: 2rem; color: #8B0000; margin-bottom: 15px; display: inline-block;"></i>
+            <i class="fas fa-gift" style="font-size: 2rem; color: #8B3E4B; margin-bottom: 15px; display: inline-block;"></i>
             <p>Ваше присутствие — самый ценный подарок для нас. Если вы захотите порадовать нас, мы будем благодарны за конверт с тёплыми пожеланиями в день торжества.</p>
         </div>
     </div>
@@ -412,7 +452,7 @@
 <!-- Footer -->
 <footer class="footer">
     <p>С любовью, Ира и Дима</p>
-    <p style="margin-top: 10px; font-size: 0.8rem;">26 Июля 2026 | Усадьба «Белый сад»</p>
+    <p style="margin-top: 10px; font-size: 0.8rem;">23 Августа 2026 | Усадьба «Tarasovo Village»</p>
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -422,7 +462,7 @@
     AOS.init({ duration: 800, once: true, offset: 50 });
 
     function updateTimer() {
-        const target = new Date(2026, 6, 26, 15, 0, 0);
+        const target = new Date(2026, 7, 23, 15, 0, 0);
         const now = new Date();
         const diff = target - now;
         if (diff <= 0) {
@@ -473,7 +513,7 @@
 
     if (localStorage.getItem('wedding_rsvp_sent')) {
         msgDiv.innerHTML = '✅ Вы уже подтвердили участие. Спасибо!';
-        msgDiv.style.color = '#8B0000';
+        msgDiv.style.color = '#8B3E4B';
         submitBtn.disabled = true;
         nameInput.disabled = true;
         attendanceRadios.forEach(r => r.disabled = true);
@@ -513,7 +553,7 @@
         submitBtn.disabled = true;
         submitBtn.innerHTML = 'Отправка...';
         msgDiv.innerHTML = '⏳ Отправка данных...';
-        msgDiv.style.color = '#8B0000';
+        msgDiv.style.color = '#8B3E4B';
         
         const data = { name: name, attendance: attendanceValue, alcohol: selectedAlcohol };
         
@@ -528,11 +568,11 @@
             localStorage.setItem('wedding_rsvp_sent', JSON.stringify({ name, attendance: attendanceValue, alcohol: selectedAlcohol, date: new Date() }));
             
             msgDiv.innerHTML = `✨ Спасибо, ${name}! Ваш ответ сохранён! ✨`;
-            msgDiv.style.color = '#8B0000';
+            msgDiv.style.color = '#8B3E4B';
             submitBtn.innerHTML = 'Отправлено ✅';
             
             if (typeof canvasConfetti === 'function') {
-                canvasConfetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#8B0000', '#B22222', '#f5e6d3'] });
+                canvasConfetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#8B3E4B', '#B22222', '#f5e6d3'] });
                 setTimeout(() => canvasConfetti({ particleCount: 100, spread: 100, origin: { y: 0.5, x: 0.3 }, startVelocity: 15 }), 200);
                 setTimeout(() => canvasConfetti({ particleCount: 100, spread: 100, origin: { y: 0.5, x: 0.7 }, startVelocity: 15 }), 200);
             }
