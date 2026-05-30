@@ -84,7 +84,7 @@
             max-width: 1400px;
             margin: 0 auto;
             height: 100vh;
-            padding-bottom: 80px;
+            padding-bottom: 120px;
             padding-top: 40px;
         }
         
@@ -183,15 +183,6 @@
             .timer-label { font-size: 0.65rem; }
             .timer-wrapper { gap: 15px; }
             
-            .venue-title {
-                font-size: 1.4rem;
-                white-space: normal;
-                text-align: center;
-            }
-            
-            .venue-box { flex-direction: column; text-align: center; }
-            .venue-info p { justify-content: flex-start; text-align: left; }
-            
             .event-card { padding: 20px 15px; }
             .event-card h3 { font-size: 1.6rem; }
             .event-icon { font-size: 2rem; margin-bottom: 15px; }
@@ -230,7 +221,6 @@
             .event-card h3 { font-size: 1.3rem; }
             .event-icon { font-size: 1.6rem; }
             .event-time { font-size: 0.8rem; }
-            .venue-title { font-size: 1.2rem; }
             .venue-info p { font-size: 0.8rem; }
             .radio-option span, .checkbox-option span { font-size: 0.7rem; }
             .radio-group, .checkbox-group { gap: 8px; }
@@ -279,12 +269,13 @@
             color: #555;
         }
         
+        /* Стили для блока "О месте проведения" - иконки на одной строке */
         .venue-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.8rem;
             font-weight: 600;
             color: #A1223A;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             white-space: nowrap;
         }
         
@@ -293,17 +284,17 @@
             font-size: 1rem;
             color: #000000;
             display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 12px;
             text-align: left;
         }
         
         .venue-info i {
             color: #A1223A;
-            width: 28px;
-            text-align: center;
+            width: 24px;
+            margin-top: 3px;
             flex-shrink: 0;
+            text-align: center;
         }
         
         .venue-address-clickable a {
@@ -337,6 +328,22 @@
         
         .venue-map img:hover {
             transform: scale(1.02);
+        }
+        
+        @media (max-width: 768px) {
+            .venue-title {
+                font-size: 1.4rem;
+                white-space: normal;
+                text-align: center;
+            }
+            .venue-box { 
+                flex-direction: column; 
+                text-align: center; 
+            }
+            .venue-info p {
+                justify-content: flex-start;
+                text-align: left;
+            }
         }
         
         .story-centered { max-width: 800px; margin: 0 auto; text-align: center; }
@@ -382,7 +389,7 @@
 <section class="hero">
     <div class="hero-parallax-bg" id="parallaxBg">
         <picture>
-            <source media="(max-width: 768px)" srcset="images/image-3-mobile.png">
+            <source media="(max-width: 768px)" srcset="images/image-3-mobile.jpg">
             <img src="images/image-3.png" alt="Свадебное фото на море">
         </picture>
     </div>
