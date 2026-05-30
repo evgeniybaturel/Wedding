@@ -18,7 +18,6 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .section { padding: 80px 0; }
         
-        /* Заголовки — Cormorant Garamond */
         .section-title { 
             font-family: 'Cormorant Garamond', serif; 
             font-size: 4rem; 
@@ -142,6 +141,49 @@
             text-shadow: none;
         }
         
+        .timer-section {
+            background: #FFFFFF;
+            padding: 30px 0;
+            border-top: 1px solid #f0e0d8;
+            border-bottom: 1px solid #f0e0d8;
+            text-align: center;
+        }
+        .timer-label-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #A1223A;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        .timer-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .timer-block {
+            text-align: center;
+            background: #FFFFFF;
+            padding: 15px 25px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            min-width: 100px;
+            border: 1px solid #f0e0d8;
+        }
+        .timer-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #A1223A;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .timer-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #555;
+        }
+        
         @media (max-width: 768px) {
             .section { padding: 40px 0; }
             .section-title { font-size: 2.5rem; }
@@ -174,10 +216,16 @@
             }
             
             .names-container { margin-top: 20px; margin-right: 10px; }
+            
+            .timer-label-text {
+                font-size: 1.4rem;
+                margin-bottom: 15px;
+            }
             .timer-block { padding: 10px 15px; min-width: 70px; }
             .timer-number { font-size: 1.5rem; }
             .timer-label { font-size: 0.65rem; }
             .timer-wrapper { gap: 15px; }
+            
             .event-card { padding: 20px 15px; }
             .event-card h3 { font-size: 1.6rem; }
             .event-icon { font-size: 2rem; margin-bottom: 15px; }
@@ -221,9 +269,15 @@
                 margin-top: 5px;
             }
             .names-container { margin-top: 15px; margin-right: 8px; }
+            
+            .timer-label-text {
+                font-size: 1.2rem;
+                margin-bottom: 12px;
+            }
             .timer-block { padding: 6px 10px; min-width: 55px; }
             .timer-number { font-size: 1.2rem; }
             .timer-label { font-size: 0.55rem; }
+            
             .event-card h3 { font-size: 1.3rem; }
             .event-icon { font-size: 1.6rem; }
             .event-time { font-size: 0.8rem; }
@@ -233,14 +287,9 @@
             .radio-group, .checkbox-group { gap: 8px; }
         }
         
-        .timer-section { background: #FFFFFF; padding: 30px 0; border-top: 1px solid #f0e0d8; border-bottom: 1px solid #f0e0d8; }
-        .timer-wrapper { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
-        .timer-block { text-align: center; background: #FFFFFF; padding: 15px 25px; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); min-width: 100px; border: 1px solid #f0e0d8; }
-        .timer-number { font-size: 2.2rem; font-weight: 700; color: #A1223A; font-family: 'Montserrat', sans-serif; }
-        .timer-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: #555; }
         .story-centered { max-width: 800px; margin: 0 auto; text-align: center; }
         .story-centered p { margin-bottom: 20px; font-size: 1rem; color: #000000; text-align: center; }
-        .story-centered .quote { font-style: italic; font-size: 1.1rem; border-left: none; padding-left: 0; margin-top: 20px; color: #333; text-align: center; }
+        .story-centered .quote { font-style: italic; font-size: 1.2rem; border-left: none; padding-left: 0; margin-top: 20px; color: #A1223A; text-align: center; font-family: 'Cormorant Garamond', serif; font-weight: 500; }
         .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; margin-top: 20px; }
         .event-card { background: white; border-radius: 24px; padding: 30px 20px; text-align: center; transition: all 0.3s ease; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid #f0e0d8; }
         .event-card:hover { transform: translateY(-8px); box-shadow: 0 20px 35px rgba(0,0,0,0.1); }
@@ -314,6 +363,7 @@
 
 <div class="timer-section">
     <div class="container">
+        <div class="timer-label-text" data-aos="fade-up">До встречи осталось:</div>
         <div class="timer-wrapper" id="timer">
             <div class="timer-block"><div class="timer-number" id="days">00</div><div class="timer-label">Дней</div></div>
             <div class="timer-block"><div class="timer-number" id="hours">00</div><div class="timer-label">Часов</div></div>
@@ -323,14 +373,15 @@
     </div>
 </div>
 
+<!-- НОВЫЙ ТЕКСТ РАЗДЕЛА -->
 <div class="section">
     <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Дорогие родные и друзья</h2>
+        <h2 class="section-title" data-aos="fade-up">Дорогие наши</h2>
         <div class="divider"></div>
         <div class="story-centered" data-aos="fade-up">
-            <p>Мы с радостью приглашаем вас разделить с нами этот особенный день, когда мы свяжем свои сердца узами любви на нашей свадьбе.</p>
-            <p>С нетерпением ждём встречи и уверены, что вместе мы создадим праздник, который запомнится на всю жизнь!</p>
-            <div class="quote">«Любовь — это когда чужое счастье становится своим собственным»</div>
+            <p>Свершилось: мы решили стать семьёй! И мы просто не можем сделать это по-тихому, без вас!</p>
+            <p>Собираем всех самых родных на наш главный праздник. С нас - вкусная еда и ледяное игристое, с вас - хорошее настроение и готовность зажигать.</p>
+            <div class="quote">Ждем с нетерпением!</div>
         </div>
     </div>
 </div>
