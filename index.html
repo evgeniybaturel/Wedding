@@ -66,6 +66,10 @@
             z-index: 2;
             pointer-events: none;
         }
+        
+        .hero::before {
+            content: none;
+        }
 
         .hero-content {
             position: relative;
@@ -96,30 +100,38 @@
             color: #8b1830;
         }
         
+        /* Увеличили размер имен Ира и Дима в 2 раза */
+        .hero-names {
+            font-size: 8.6rem;
+        }
+        
         .hero-names span:last-child {
             margin-left: 35px;
         }
         
-        /* Увеличиваем размер всей фразы в 1.5 раза */
         .hero-subtitle {
             margin-top: 16px;
             margin-left: 100px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.65rem;      /* было 1.1rem → увеличили в 1.5 */
             font-weight: 500;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             color: #666;
+            /* Увеличили размер фразы WEDDING DAY · 23.08.2026 в 1.5 раза */
+            font-size: 1.65rem;
         }
         
         @media (max-width: 768px) {
+            .hero-names {
+                font-size: 5.5rem;
+            }
             .hero-names span:last-child {
                 margin-left: 25px;
             }
             .hero-subtitle {
                 margin-left: 70px;
-                font-size: 1.2rem;    /* адаптивно: было 0.95rem → увеличен в 1.26, но сохраняем пропорции */
-                letter-spacing: 2px;
+                font-size: 1.2rem;
+                letter-spacing: 1.5px;
             }
             .hero-content {
                 justify-content: flex-start;
@@ -131,17 +143,9 @@
             .section-title { font-size: 2.5rem; }
             .divider { margin-bottom: 25px; }
             
-            .hero-names { font-size: 4.5rem; }
-            
             .timer-label-text {
                 font-size: 1.4rem;
                 margin-bottom: 15px;
-            }
-            /* Контейнер таймера — nowrap чтобы все блоки в одной строке */
-            .timer-wrapper {
-                flex-wrap: nowrap;
-                justify-content: center;
-                gap: 12px;
             }
             .timer-block { padding: 8px 12px; min-width: 65px; }
             .timer-number { font-size: 1.3rem; }
@@ -157,37 +161,39 @@
             .venue-map img { border-radius: 15px; }
             .rsvp-box { padding: 25px; }
             .form-label { font-size: 0.9rem; }
-            .radio-option span, .checkbox-option span { font-size: 0.85rem; }
+            .radio-option span, .checkbox-option span { font-size: 0.8rem; }
             .radio-group, .checkbox-group { gap: 12px; }
-            /* вертикальное расположение вариантов ответа */
-            .radio-group { flex-direction: column; gap: 10px; align-items: flex-start; }
             button { padding: 12px 20px; font-size: 0.9rem; }
             .gift-note { font-size: 0.9rem; }
             .footer { padding: 25px 15px; }
             .footer p { font-size: 0.85rem; }
+            /* Вертикальное расположение радио-групп на мобильных */
+            .attendance-vertical {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
         }
         
         @media (max-width: 480px) {
+            .hero-names {
+                font-size: 4rem;
+            }
             .hero-names span:last-child {
                 margin-left: 18px;
             }
             .hero-subtitle {
                 margin-left: 45px;
                 font-size: 1rem;
-                letter-spacing: 1.5px;
+                letter-spacing: 1px;
                 margin-top: 12px;
             }
             .section-title { font-size: 2.2rem; }
             .hero-content { padding-top: 30px; }
-            .hero-names { font-size: 3rem; }
             
             .timer-label-text {
                 font-size: 1.2rem;
                 margin-bottom: 12px;
-            }
-            .timer-wrapper {
-                flex-wrap: nowrap;
-                gap: 8px;
             }
             .timer-block { padding: 5px 8px; min-width: 55px; }
             .timer-number { font-size: 1.1rem; }
@@ -198,16 +204,33 @@
             .event-time { font-size: 0.8rem; }
             .event-description { font-size: 0.7rem; }
             .venue-info p { font-size: 0.8rem; }
-            .radio-option span, .checkbox-option span { font-size: 0.8rem; }
-            .radio-group { gap: 8px; flex-direction: column; }
+            .radio-option span, .checkbox-option span { font-size: 0.7rem; }
+            .radio-group, .checkbox-group { gap: 8px; }
         }
         
-        /* Основной стиль таймера: чтобы блоки шли в одну строку без переноса */
+        .timer-section {
+            background: #FFFFFF;
+            padding: 30px 0;
+            border-top: 1px solid #f0e0d8;
+            border-bottom: 1px solid #f0e0d8;
+            text-align: center;
+        }
+        .timer-label-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #A1223A;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        /* Исправление: все блоки таймера в одну строку без переносов */
         .timer-wrapper {
             display: flex;
             justify-content: center;
             gap: 20px;
-            flex-wrap: nowrap;   /* гарантия одной строки */
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            white-space: nowrap;
         }
         .timer-block {
             text-align: center;
@@ -217,7 +240,7 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.05);
             min-width: 80px;
             border: 1px solid #f0e0d8;
-            white-space: nowrap;
+            flex-shrink: 0;
         }
         .timer-number {
             font-size: 1.8rem;
@@ -232,23 +255,20 @@
             color: #555;
         }
         
-        /* Карточка с историей (обернули в стилизованный блок с иконкой сердца) */
+        /* Карточка для истории с сердечком */
         .story-card {
             background: white;
             border-radius: 30px;
-            padding: 35px 30px;
+            padding: 40px 35px;
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
             box-shadow: 0 15px 35px rgba(0,0,0,0.05);
             border: 1px solid #f0e0d8;
-            transition: transform 0.3s ease;
-        }
-        .story-card:hover {
-            transform: translateY(-5px);
+            transition: all 0.3s ease;
         }
         .story-icon {
-            font-size: 2.8rem;
+            font-size: 3rem;
             color: #A1223A;
             margin-bottom: 20px;
         }
@@ -297,6 +317,7 @@
             margin-bottom: 20px;
             white-space: nowrap;
         }
+        
         .venue-info p {
             margin-bottom: 12px;
             font-size: 1rem;
@@ -306,6 +327,7 @@
             gap: 12px;
             text-align: left;
         }
+        
         .venue-info i {
             color: #A1223A;
             width: 24px;
@@ -313,114 +335,50 @@
             flex-shrink: 0;
             text-align: center;
         }
+        
         .venue-address-clickable a {
             color: #000000;
             text-decoration: none;
             border-bottom: 1px dashed #A1223A;
             transition: all 0.3s ease;
         }
+        
         .venue-address-clickable a:hover {
             color: #A1223A;
             border-bottom-color: transparent;
         }
+        
         .coordinator-link {
             color: #A1223A;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
         }
+        
         .coordinator-link:hover {
             text-decoration: underline;
         }
+        
         .venue-map {
             flex: 1.2;
             min-width: 200px;
             text-align: center;
         }
+        
         .venue-map a {
             text-decoration: none;
         }
+        
         .venue-map img {
             width: 100%;
             border-radius: 20px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
         }
+        
         .venue-map img:hover {
             transform: scale(1.02);
         }
-        .venue-box { background: white; border-radius: 30px; padding: 40px; margin-top: 30px; display: flex; flex-wrap: wrap; gap: 30px; align-items: center; box-shadow: 0 15px 35px rgba(0,0,0,0.05); border: 1px solid #f0e0d8; }
-        .venue-info { flex: 2; }
-        
-        .rsvp-box { background: white; border-radius: 30px; padding: 45px; max-width: 700px; margin: 0 auto; box-shadow: 0 20px 40px rgba(0,0,0,0.05); border: 1px solid #f0e0d8; }
-        .rsvp-subtitle {
-            text-align: center;
-            font-size: 1rem;
-            color: #666;
-            margin-bottom: 30px;
-            font-family: 'Raleway', sans-serif;
-        }
-        .form-group { margin-bottom: 25px; }
-        .form-label { font-family: 'Raleway', sans-serif; font-size: 1rem; font-weight: 500; color: #000000; margin-bottom: 8px; display: block; }
-        
-        /* ВЕРТИКАЛЬНОЕ расположение вариантов ответа: radio-group колонка */
-        .radio-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 10px;
-            align-items: flex-start;
-        }
-        .checkbox-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 18px;
-            margin-top: 10px;
-        }
-        .radio-option, .checkbox-option {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-        }
-        .radio-option input, .checkbox-option input {
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-            accent-color: #A1223A;
-            margin: 0;
-        }
-        .radio-option span, .checkbox-option span {
-            font-family: 'Raleway', sans-serif;
-            font-size: 0.95rem;
-            color: #000000;
-        }
-        input[type="text"] {
-            width: 100%;
-            padding: 14px 20px;
-            border: 1px solid #e0d0c8;
-            border-radius: 50px;
-            font-family: 'Raleway', sans-serif;
-            font-size: 1rem;
-            background: #FFFFFF;
-        }
-        input[type="text"]:focus { outline: none; border-color: #A1223A; box-shadow: 0 0 0 3px rgba(161, 34, 58, 0.1); }
-        button {
-            background: #A1223A;
-            color: white;
-            border: none;
-            padding: 14px 35px;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 50px;
-            cursor: pointer;
-            width: 100%;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        button:hover { background: #7A1A2E; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(161, 34, 58, 0.3); }
-        button:disabled { opacity: 0.6; transform: none; cursor: not-allowed; }
-        .footer { background: #A1223A; color: #f0d8d8; text-align: center; padding: 40px 20px; }
-        #confetti-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999; }
         
         @media (max-width: 768px) {
             .venue-title {
@@ -436,16 +394,45 @@
                 justify-content: flex-start;
                 text-align: left;
             }
-            .story-card {
-                padding: 25px 20px;
-            }
-            .story-icon {
-                font-size: 2.2rem;
-            }
-            .checkbox-group {
-                gap: 12px;
-            }
         }
+        
+        .venue-box { background: white; border-radius: 30px; padding: 40px; margin-top: 30px; display: flex; flex-wrap: wrap; gap: 30px; align-items: center; box-shadow: 0 15px 35px rgba(0,0,0,0.05); border: 1px solid #f0e0d8; }
+        .venue-info { flex: 2; }
+        .rsvp-box { background: white; border-radius: 30px; padding: 45px; max-width: 700px; margin: 0 auto; box-shadow: 0 20px 40px rgba(0,0,0,0.05); border: 1px solid #f0e0d8; }
+        .rsvp-subtitle {
+            text-align: center;
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 30px;
+            font-family: 'Raleway', sans-serif;
+        }
+        .form-group { margin-bottom: 25px; }
+        .form-label { font-family: 'Raleway', sans-serif; font-size: 1rem; font-weight: 500; color: #000000; margin-bottom: 8px; display: block; }
+        
+        /* Вертикальное расположение радио-групп (каждый вариант с новой строки) */
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 10px;
+        }
+        .radio-option, .checkbox-option { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+        .radio-option input, .checkbox-option input { width: 18px; height: 18px; cursor: pointer; accent-color: #A1223A; margin: 0; }
+        .radio-option span, .checkbox-option span { font-family: 'Raleway', sans-serif; font-size: 0.95rem; color: #000000; }
+        input[type="text"] { width: 100%; padding: 14px 20px; border: 1px solid #e0d0c8; border-radius: 50px; font-family: 'Raleway', sans-serif; font-size: 1rem; background: #FFFFFF; }
+        input[type="text"]:focus { outline: none; border-color: #A1223A; box-shadow: 0 0 0 3px rgba(161, 34, 58, 0.1); }
+        button { background: #A1223A; color: white; border: none; padding: 14px 35px; font-size: 1rem; font-weight: 600; border-radius: 50px; cursor: pointer; width: 100%; transition: transform 0.2s, box-shadow 0.2s; }
+        button:hover { background: #7A1A2E; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(161, 34, 58, 0.3); }
+        button:disabled { opacity: 0.6; transform: none; cursor: not-allowed; }
+        .gift-section { background: #FFFFFF; text-align: center; border-top: 1px solid #f0e0d8; border-bottom: 1px solid #f0e0d8; }
+        .footer { background: #A1223A; color: #f0d8d8; text-align: center; padding: 40px 20px; }
+        #confetti-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999; }
     </style>
 </head>
 <body>
@@ -470,6 +457,9 @@
             </div>
         </div>
     </div>
+    <div class="hero-overlay">
+        <i class="fas fa-chevron-down" style="font-size: 24px; opacity: 0.7;"></i>
+    </div>
 </section>
 
 <div class="timer-section">
@@ -484,9 +474,11 @@
     </div>
 </div>
 
-<!-- Текст "Свершилось ..." обёрнут в карточку с иконкой сердечка -->
 <div class="section">
     <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Дорогие наши</h2>
+        <div class="divider"></div>
+        <!-- Обернули текст в карточку с иконкой сердечка -->
         <div class="story-card" data-aos="fade-up">
             <div class="story-icon">
                 <i class="fas fa-heart"></i>
@@ -553,7 +545,7 @@
             </div>
             <div class="event-card" data-aos="zoom-in" data-aos-delay="100">
                 <div class="event-icon"><i class="fas fa-ring"></i></div>
-                <h3>Церемония и поздравления</h3>
+                <h3>Церемония и поздравления</h3> <!-- Уместили в одну строку -->
                 <div class="event-time">16:00 – 17:00</div>
                 <div class="event-description">Вот тут мы скажем друг другу "Да!", а вы будете рядом. Потом поздравления и много красивых фото</div>
             </div>
@@ -582,7 +574,6 @@
                 
                 <div class="form-group">
                     <div class="form-label">Будете ли вы присутствовать на нашем торжестве?</div>
-                    <!-- Вертикальное расположение radio-вариантов: каждый с новой строки -->
                     <div class="radio-group">
                         <label class="radio-option">
                             <input type="radio" name="attendance" value="yes"> 
@@ -597,12 +588,14 @@
                 
                 <div class="form-group">
                     <div class="form-label">Какой алкоголь вы предпочитаете?</div>
-                    <div class="checkbox-group" style="flex-wrap: wrap; gap: 12px;">
+                    <div class="checkbox-group">
                         <label class="checkbox-option"><input type="checkbox" name="alcohol" value="вино"> <span>Вино</span></label>
                         <label class="checkbox-option"><input type="checkbox" name="alcohol" value="шампанское"> <span>Шампанское</span></label>
                         <label class="checkbox-option"><input type="checkbox" name="alcohol" value="виски"> <span>Виски</span></label>
                         <label class="checkbox-option"><input type="checkbox" name="alcohol" value="коньяк"> <span>Коньяк</span></label>
                         <label class="checkbox-option"><input type="checkbox" name="alcohol" value="водка"> <span>Водка</span></label>
+                        <!-- Новый вариант "не буду пить спиртное" -->
+                        <label class="checkbox-option"><input type="checkbox" name="alcohol" value="не буду пить спиртное"> <span>Не буду пить спиртное</span></label>
                     </div>
                 </div>
                 
@@ -619,15 +612,17 @@
         <div class="divider"></div>
         <div class="details-grid" data-aos="fade-up">
             <div class="detail-card">
+                <!-- Убрали точки в конце текстов -->
                 <div class="detail-icon"><i class="fas fa-gift"></i></div>
                 <div class="detail-text">
-                    Цветы - прекрасный жест. Но они достаточно быстро вянут. Мы будем вам благодарны, если вместо букета вы подарите нам бутылочку своего любимого спиртного. А мы потом за ужином с этой бутылочкой будем вспоминать нашу свадьбу и вас.
+                    Цветы - прекрасный жест. Но они достаточно быстро вянут. Мы будем вам благодарны, если вместо букета вы подарите нам бутылочку своего любимого спиртного. А мы потом за ужином с этой бутылочкой будем вспоминать нашу свадьбу и вас
                 </div>
             </div>
             <div class="detail-card">
-                <div class="detail-icon"><i class="fas fa-baby"></i></div>
+                <!-- Заменили иконку ребенка на более подходящую (fas fa-child или fa-user-friends) - используем fa-child как иконку ребенка старшего возраста -->
+                <div class="detail-icon"><i class="fas fa-child"></i></div>
                 <div class="detail-text">
-                    И, конечно, мы очень любим ваших деток. Вместе с тем этот вечер хотели бы провести в формате adults only, без маленьких спутников.
+                    И, конечно, мы очень любим ваших деток. Вместе с тем этот вечер хотели бы провести в формате adults only, без маленьких спутников
                 </div>
             </div>
         </div>
