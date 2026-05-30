@@ -193,16 +193,35 @@
             white-space: nowrap;
         }
         
+        .venue-info p {
+            margin-bottom: 12px;
+            font-size: 1rem;
+            color: #000000;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .venue-info i {
+            color: #A1223A;
+            width: 24px;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+        
         .route-button-wrapper {
             margin-top: 20px;
             text-align: left;
         }
         
         .route-button {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             background: #A1223A;
             color: white;
-            padding: 10px 20px;
+            padding: 10px 24px;
             border-radius: 50px;
             text-decoration: none;
             font-family: 'Montserrat', sans-serif;
@@ -214,7 +233,9 @@
         }
         
         .route-button i {
-            margin-right: 8px;
+            margin: 0;
+            width: auto;
+            color: white;
         }
         
         .route-button:hover {
@@ -359,13 +380,11 @@
         .event-address { font-size: 0.85rem; color: #666; }
         .venue-box { background: white; border-radius: 30px; padding: 40px; margin-top: 30px; display: flex; flex-wrap: wrap; gap: 30px; align-items: center; box-shadow: 0 15px 35px rgba(0,0,0,0.05); border: 1px solid #f0e0d8; }
         .venue-info { flex: 2; }
-        .venue-info p { margin-bottom: 12px; font-size: 1rem; color: #000000; }
-        .venue-info i { color: #A1223A; width: 28px; margin-right: 8px; }
         .venue-map { flex: 1.2; min-width: 200px; text-align: center; }
         .venue-map img { width: 100%; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
         @media (max-width: 768px) { 
             .venue-box { flex-direction: column; text-align: center; } 
-            .venue-info i { margin-right: 5px; } 
+            .venue-info p { justify-content: center; }
         }
         .rsvp-box { background: white; border-radius: 30px; padding: 45px; max-width: 700px; margin: 0 auto; box-shadow: 0 20px 40px rgba(0,0,0,0.05); border: 1px solid #f0e0d8; }
         .form-group { margin-bottom: 25px; }
