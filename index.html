@@ -105,30 +105,130 @@
         }
         
         .hero-subtitle {
-            margin-top: 12px;
-            margin-left: 70px;
+            margin-top: 16px;
+            margin-left: 100px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
+            font-size: 1.1rem;
             font-weight: 500;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             color: #666;
         }
         
-        .hero-overlay {
-            position: absolute;
-            bottom: 30px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            animation: bounce 2s infinite;
-            z-index: 3;
-            color: white;
+        @media (max-width: 768px) {
+            .hero-names span:last-child {
+                margin-left: 25px;
+            }
+            .hero-subtitle {
+                margin-left: 70px;
+                font-size: 0.95rem;
+                letter-spacing: 1.5px;
+            }
+            .hero-content {
+                justify-content: flex-start;
+                padding-top: 40px;
+                padding-bottom: 20px;
+            }
+            
+            .section { padding: 40px 0; }
+            .section-title { font-size: 2.5rem; }
+            .divider { margin-bottom: 25px; }
+            
+            .hero-names { font-size: 4.5rem; }
+            
+            .timer-label-text {
+                font-size: 1.4rem;
+                margin-bottom: 15px;
+            }
+            .timer-block { 
+                padding: 8px 0; 
+                min-width: 70px; 
+                width: auto;
+                flex: 1;
+            }
+            .timer-number { font-size: 1.3rem; }
+            .timer-label { font-size: 0.55rem; }
+            
+            .event-card { padding: 20px 15px; }
+            .event-card h3 { font-size: 1.6rem; }
+            .event-icon { font-size: 2rem; margin-bottom: 15px; }
+            .event-time { font-size: 0.9rem; }
+            .event-description { font-size: 0.8rem; }
+            .venue-box { padding: 25px; gap: 20px; }
+            .venue-info p { font-size: 0.9rem; }
+            .venue-map img { border-radius: 15px; }
+            .rsvp-box { padding: 25px; }
+            .form-label { font-size: 0.9rem; }
+            .radio-option span, .checkbox-option span { font-size: 0.8rem; }
+            .radio-group, .checkbox-group { gap: 12px; }
+            button { padding: 12px 20px; font-size: 0.9rem; }
+            .gift-note { font-size: 0.9rem; }
+            .footer { padding: 25px 15px; }
+            .footer p { font-size: 0.85rem; }
         }
         
-        @keyframes bounce { 
-            0%, 100% { transform: translateY(0); } 
-            50% { transform: translateY(10px); } 
+        @media (max-width: 480px) {
+            .hero-names span:last-child {
+                margin-left: 18px;
+            }
+            .hero-subtitle {
+                margin-left: 45px;
+                font-size: 0.8rem;
+                letter-spacing: 1px;
+                margin-top: 12px;
+            }
+            .section-title { font-size: 2.2rem; }
+            .hero-content { padding-top: 30px; }
+            .hero-names { font-size: 3rem; }
+            
+            .timer-label-text {
+                font-size: 1.2rem;
+                margin-bottom: 12px;
+            }
+            .timer-block { 
+                padding: 6px 0; 
+                min-width: 60px;
+            }
+            .timer-number { font-size: 1.1rem; }
+            .timer-label { font-size: 0.5rem; }
+            
+            .event-card h3 { font-size: 1.3rem; }
+            .event-icon { font-size: 1.6rem; }
+            .event-time { font-size: 0.8rem; }
+            .event-description { font-size: 0.7rem; }
+            .venue-info p { font-size: 0.8rem; }
+            .radio-option span, .checkbox-option span { font-size: 0.7rem; }
+        }
+        
+        /* Фикс для таймера: все блоки одинакового размера, помещаются в строку */
+        .timer-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: nowrap;
+            width: 100%;
+        }
+        .timer-block {
+            text-align: center;
+            background: #FFFFFF;
+            padding: 12px 0;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border: 1px solid #f0e0d8;
+            flex: 1;
+            min-width: 0;
+            max-width: 100px;
+        }
+        @media (max-width: 550px) {
+            .timer-wrapper { gap: 8px; }
+            .timer-block { padding: 8px 0; }
+            .timer-number { font-size: 1rem; }
+            .timer-label { font-size: 0.45rem; }
+        }
+        @media (max-width: 450px) {
+            .timer-wrapper { gap: 6px; }
+            .timer-block { min-width: 55px; }
+            .timer-number { font-size: 0.9rem; }
         }
         
         .timer-section {
@@ -146,62 +246,41 @@
             margin-bottom: 20px;
             letter-spacing: 1px;
         }
-        .timer-wrapper {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: nowrap;
-        }
-        .timer-block {
-            text-align: center;
-            background: #FFFFFF;
-            padding: 10px 15px;
-            border-radius: 16px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-            min-width: 75px;
-            border: 1px solid #f0e0d8;
-            flex: 0 0 auto;
-        }
-        .timer-number {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #A1223A;
-            font-family: 'Montserrat', sans-serif;
-        }
-        .timer-label {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #555;
-        }
         
-        /* Карточка как venue-box - без иконки */
+        /* Карточка для основного текста */
         .story-card {
             background: white;
             border-radius: 30px;
-            padding: 45px;
-            max-width: 900px;
+            padding: 45px 35px;
+            max-width: 800px;
             margin: 0 auto;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
             border: 1px solid #f0e0d8;
-            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .story-card:hover {
+            transform: translateY(-5px);
         }
         .story-card p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #2c2c2c;
             margin-bottom: 20px;
-            font-size: 1rem;
-            color: #000000;
-            text-align: center;
+            font-family: 'Raleway', sans-serif;
         }
         .story-card .last-line {
             font-family: 'Raleway', sans-serif;
             font-style: normal;
-            color: #000000;
-            font-size: 1rem;
-            margin-top: 10px;
+            color: #A1223A;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 15px;
+            margin-bottom: 0;
         }
         .highlight-number {
             color: #A1223A;
-            font-weight: 700;
+            font-weight: 800;
+            font-size: 1.3rem;
         }
         
         .venue-title {
@@ -275,21 +354,26 @@
             transform: scale(1.02);
         }
         
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
+        @media (max-width: 768px) {
+            .venue-title {
+                font-size: 1.4rem;
+                white-space: normal;
+                text-align: center;
+            }
+            .venue-box { 
+                flex-direction: column; 
+                text-align: center; 
+            }
+            .venue-info p {
+                justify-content: flex-start;
+                text-align: left;
+            }
+            .story-card { padding: 30px 20px; }
+            .story-card p { font-size: 0.95rem; }
         }
-        .event-card {
-            background: white;
-            border-radius: 24px;
-            padding: 30px 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            border: 1px solid #f0e0d8;
-        }
+        
+        .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 20px; }
+        .event-card { background: white; border-radius: 24px; padding: 30px 20px; text-align: center; transition: all 0.3s ease; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid #f0e0d8; }
         .event-card:hover { transform: translateY(-8px); box-shadow: 0 20px 35px rgba(0,0,0,0.1); }
         .event-icon { font-size: 2.5rem; color: #A1223A; margin-bottom: 20px; }
         .event-card h3 { 
@@ -302,48 +386,14 @@
         .event-time { font-weight: 600; margin-bottom: 12px; color: #555; font-size: 1rem; }
         .event-description { font-size: 0.9rem; color: #666; line-height: 1.4; }
         
-        .details-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .detail-card {
-            background: white;
-            border-radius: 24px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            border: 1px solid #f0e0d8;
-        }
+        .details-grid { display: flex; flex-direction: column; gap: 30px; max-width: 800px; margin: 0 auto; }
+        .detail-card { background: white; border-radius: 24px; padding: 30px; text-align: center; transition: all 0.3s ease; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid #f0e0d8; }
         .detail-icon { font-size: 2.5rem; color: #A1223A; margin-bottom: 20px; }
         .detail-text { font-size: 1rem; color: #000000; line-height: 1.5; }
         
-        .venue-box {
-            background: white;
-            border-radius: 30px;
-            padding: 40px;
-            margin-top: 30px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            align-items: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-            border: 1px solid #f0e0d8;
-        }
+        .venue-box { background: white; border-radius: 30px; padding: 40px; margin-top: 30px; display: flex; flex-wrap: wrap; gap: 30px; align-items: center; box-shadow: 0 15px 35px rgba(0,0,0,0.05); border: 1px solid #f0e0d8; }
         .venue-info { flex: 2; }
-        
-        .rsvp-box {
-            background: white;
-            border-radius: 30px;
-            padding: 45px;
-            max-width: 700px;
-            margin: 0 auto;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-            border: 1px solid #f0e0d8;
-        }
+        .rsvp-box { background: white; border-radius: 30px; padding: 45px; max-width: 700px; margin: 0 auto; box-shadow: 0 20px 40px rgba(0,0,0,0.05); border: 1px solid #f0e0d8; }
         .rsvp-subtitle {
             text-align: center;
             font-size: 1rem;
@@ -351,11 +401,17 @@
             margin-bottom: 30px;
             font-family: 'Raleway', sans-serif;
         }
-        .form-group { margin-bottom: 25px; }
-        .form-label { font-family: 'Raleway', sans-serif; font-size: 1rem; font-weight: 500; color: #000000; margin-bottom: 12px; display: block; }
+        .form-group { margin-bottom: 28px; }
+        .form-label { font-family: 'Raleway', sans-serif; font-size: 1rem; font-weight: 600; color: #222; margin-bottom: 12px; display: block; }
         
-        /* Вертикальное расположение вариантов ответов */
-        .radio-group, .checkbox-group {
+        /* Вертикальное расположение радио и чекбоксов */
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 5px;
+        }
+        .checkbox-group {
             display: flex;
             flex-direction: column;
             gap: 12px;
@@ -364,30 +420,39 @@
         .radio-option, .checkbox-option {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 40px;
+            background: #faf7f5;
+            transition: background 0.2s;
+        }
+        .radio-option:hover, .checkbox-option:hover {
+            background: #f5ede8;
         }
         .radio-option input, .checkbox-option input {
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             cursor: pointer;
             accent-color: #A1223A;
             margin: 0;
         }
         .radio-option span, .checkbox-option span {
             font-family: 'Raleway', sans-serif;
-            font-size: 0.95rem;
-            color: #000000;
+            font-size: 1rem;
+            color: #1f1f1f;
+            font-weight: 500;
         }
         
         input[type="text"] {
             width: 100%;
-            padding: 14px 20px;
+            padding: 15px 24px;
             border: 1px solid #e0d0c8;
             border-radius: 50px;
             font-family: 'Raleway', sans-serif;
             font-size: 1rem;
             background: #FFFFFF;
+            transition: all 0.2s;
         }
         input[type="text"]:focus {
             outline: none;
@@ -405,6 +470,7 @@
             cursor: pointer;
             width: 100%;
             transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
         }
         button:hover {
             background: #7A1A2E;
@@ -416,53 +482,24 @@
             transform: none;
             cursor: not-allowed;
         }
-        
         .footer {
             background: #A1223A;
             color: #f0d8d8;
             text-align: center;
             padding: 40px 20px;
         }
-        #confetti-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999; }
-        
-        @media (max-width: 768px) {
-            .hero-names span:last-child {
-                margin-left: 25px;
-            }
-            .hero-subtitle {
-                margin-left: 50px;
-                font-size: 0.75rem;
-            }
-            .hero-content {
-                padding-top: 40px;
-                padding-left: 25px;
-            }
-            .timer-block { padding: 8px 10px; min-width: 65px; }
-            .timer-number { font-size: 1.3rem; }
-            .timer-label { font-size: 0.55rem; }
-            .timer-wrapper { gap: 10px; }
-            .story-card { padding: 25px; }
-            .venue-title {
-                font-size: 1.4rem;
-                white-space: normal;
-                text-align: center;
-            }
-            .venue-box { flex-direction: column; text-align: center; }
-            .venue-info p { justify-content: flex-start; text-align: left; }
-            .section-title { font-size: 2.5rem; }
-            .section { padding: 40px 0; }
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
         }
-        
-        @media (max-width: 550px) {
-            .timer-wrapper { gap: 8px; }
-            .timer-block { padding: 6px 8px; min-width: 55px; }
-            .timer-number { font-size: 1rem; }
-            .timer-label { font-size: 0.45rem; }
-            .hero-names { font-size: 3rem; }
-            .hero-subtitle {
-                margin-left: 35px;
-                font-size: 0.65rem;
-            }
+        @media (max-width: 600px) {
+            .rsvp-box { padding: 25px; }
+            .radio-option, .checkbox-option { padding: 5px 8px; }
         }
     </style>
 </head>
@@ -473,8 +510,8 @@
 <section class="hero">
     <div class="hero-parallax-bg" id="parallaxBg">
         <picture>
-            <source media="(max-width: 768px)" srcset="images/image-3-mobile.jpg">
-            <img src="images/image-3.png" alt="Свадебное фото на море">
+            <source media="(max-width: 768px)" srcset="https://placehold.co/800x1200/f8f5f2/8b1830?text=Wedding+Mobile">
+            <img src="https://placehold.co/1600x1200/f8f5f2/8b1830?text=Wedding+Couple" alt="Свадебное фото на море">
         </picture>
     </div>
     <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
@@ -487,9 +524,6 @@
                 WEDDING DAY · 23.08.2026
             </div>
         </div>
-    </div>
-    <div class="hero-overlay">
-        <i class="fas fa-chevron-down" style="font-size: 24px; opacity: 0.7;"></i>
     </div>
 </section>
 
@@ -505,13 +539,12 @@
     </div>
 </div>
 
+<!-- Основной текст в карточке, как просили -->
 <div class="section">
     <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Дорогие наши</h2>
-        <div class="divider"></div>
         <div class="story-card" data-aos="fade-up">
             <p>Свершилось: мы решили стать семьёй!<br>И мы просто не можем сделать это по-тихому, без вас!</p>
-            <p>Собираем всех самых родных на наш главный праздник. С нас - вкусная еда и ледяное игристое, с вас - хорошее настроение и готовность зажигать</p>
+            <p>Собираем всех самых родных на наш главный праздник. С нас — вкусная еда и ледяное игристое, с вас — хорошее настроение и готовность зажигать</p>
             <p class="last-line">Ждём с нетерпением <span class="highlight-number">23</span> августа!</p>
         </div>
     </div>
@@ -545,7 +578,7 @@
             </div>
             <div class="venue-map">
                 <a href="https://yandex.ru/navi/org/usadba_tarasovo_village/180449201850?si=cd6kcu057jvctzk0abyj7w9a5w" target="_blank" rel="noopener noreferrer">
-                    <img src="images/image-1.jpg" alt="Усадьба Tarasovo Village">
+                    <img src="https://placehold.co/600x400/eeded5/A1223A?text=Tarasovo+Village" alt="Усадьба Tarasovo Village">
                 </a>
                 <p style="font-size: 0.7rem; text-align: center; margin-top: 8px;">
                     <a href="https://yandex.ru/navi/org/usadba_tarasovo_village/180449201850?si=cd6kcu057jvctzk0abyj7w9a5w" target="_blank" rel="noopener noreferrer" style="color: #A1223A;">
@@ -602,28 +635,28 @@
                     <div class="radio-group">
                         <label class="radio-option">
                             <input type="radio" name="attendance" value="yes"> 
-                            <span>Да</span>
+                            <span>Да, конечно!</span>
                         </label>
                         <label class="radio-option">
                             <input type="radio" name="attendance" value="no"> 
-                            <span>Нет</span>
+                            <span>К сожалению, нет</span>
                         </label>
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <div class="form-label">Какой алкоголь вы предпочитаете?</div>
+                    <div class="form-label">Какой алкоголь вы предпочитаете? (можно выбрать несколько вариантов)</div>
                     <div class="checkbox-group">
-                        <label class="checkbox-option"><input type="checkbox" name="alcohol" value="вино"> <span>Вино</span></label>
-                        <label class="checkbox-option"><input type="checkbox" name="alcohol" value="шампанское"> <span>Шампанское</span></label>
-                        <label class="checkbox-option"><input type="checkbox" name="alcohol" value="виски"> <span>Виски</span></label>
-                        <label class="checkbox-option"><input type="checkbox" name="alcohol" value="коньяк"> <span>Коньяк</span></label>
-                        <label class="checkbox-option"><input type="checkbox" name="alcohol" value="водка"> <span>Водка</span></label>
+                        <label class="checkbox-option"><input type="checkbox" name="alcohol" value="вино"> <span>🍷 Вино</span></label>
+                        <label class="checkbox-option"><input type="checkbox" name="alcohol" value="шампанское"> <span>🥂 Шампанское</span></label>
+                        <label class="checkbox-option"><input type="checkbox" name="alcohol" value="виски"> <span>🥃 Виски</span></label>
+                        <label class="checkbox-option"><input type="checkbox" name="alcohol" value="коньяк"> <span>🥃 Коньяк</span></label>
+                        <label class="checkbox-option"><input type="checkbox" name="alcohol" value="водка"> <span>🍸 Водка</span></label>
                     </div>
                 </div>
                 
                 <button type="submit" id="submitRsvp">Отправить ответ <i class="fas fa-heart"></i></button>
-                <div id="rsvpMessage" style="text-align: center; margin-top: 15px; font-size: 0.9rem;"></div>
+                <div id="rsvpMessage" style="text-align: center; margin-top: 18px; font-size: 0.9rem;"></div>
             </form>
         </div>
     </div>
@@ -637,7 +670,7 @@
             <div class="detail-card">
                 <div class="detail-icon"><i class="fas fa-gift"></i></div>
                 <div class="detail-text">
-                    Цветы - прекрасный жест. Но они достаточно быстро вянут. Мы будем вам благодарны, если вместо букета вы подарите нам бутылочку своего любимого спиртного. А мы потом за ужином с этой бутылочкой будем вспоминать нашу свадьбу и вас.
+                    Цветы — прекрасный жест. Но они достаточно быстро вянут. Мы будем вам благодарны, если вместо букета вы подарите нам бутылочку своего любимого спиртного. А мы потом за ужином с этой бутылочкой будем вспоминать нашу свадьбу и вас.
                 </div>
             </div>
             <div class="detail-card">
