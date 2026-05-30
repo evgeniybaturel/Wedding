@@ -183,27 +183,44 @@
             color: #555;
         }
         
-        /* Новые стили для блока "О месте проведения" */
+        /* Стили для блока "О месте проведения" */
         .venue-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem; /* Уменьшили размер */
+            font-size: 1.8rem;
             font-weight: 600;
             color: #A1223A;
             margin-bottom: 15px;
-            white-space: nowrap; /* Запрещаем перенос текста */
+            white-space: nowrap;
         }
-        .venue-address-clickable {
-            margin-bottom: 0;
+        
+        .route-button-wrapper {
+            margin-top: 20px;
+            text-align: left;
         }
-        .venue-address-clickable a {
-            color: #000000;
+        
+        .route-button {
+            display: inline-block;
+            background: #A1223A;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
             text-decoration: none;
-            border-bottom: 1px dashed #A1223A; /* Красивое подчеркивание */
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
-        .venue-address-clickable a:hover {
-            color: #A1223A;
-            border-bottom-color: transparent;
+        
+        .route-button i {
+            margin-right: 8px;
+        }
+        
+        .route-button:hover {
+            background: #7A1A2E;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(161, 34, 58, 0.3);
         }
         
         @media (max-width: 768px) {
@@ -248,10 +265,14 @@
             .timer-label { font-size: 0.65rem; }
             .timer-wrapper { gap: 15px; }
             
-            /* Мобильная адаптация для заголовка усадьбы */
             .venue-title {
                 font-size: 1.4rem;
-                white-space: normal; /* На телефонах перенос все же разрешим, если не влезает */
+                white-space: normal;
+                text-align: center;
+            }
+            
+            .route-button-wrapper {
+                text-align: center;
             }
             
             .event-card { padding: 20px 15px; }
@@ -260,7 +281,6 @@
             .event-time { font-size: 0.9rem; }
             .event-address { font-size: 0.75rem; }
             .venue-box { padding: 25px; gap: 20px; }
-            .venue-info h3 { font-size: 1.6rem; }
             .venue-info p { font-size: 0.9rem; }
             .venue-map img { border-radius: 15px; }
             .rsvp-box { padding: 25px; }
@@ -312,8 +332,11 @@
             .venue-title {
                 font-size: 1.2rem;
             }
-            .venue-info h3 { font-size: 1.4rem; }
             .venue-info p { font-size: 0.8rem; }
+            .route-button {
+                font-size: 0.8rem;
+                padding: 8px 16px;
+            }
             .radio-option span, .checkbox-option span { font-size: 0.7rem; }
             .radio-group, .checkbox-group { gap: 8px; }
         }
@@ -339,9 +362,7 @@
         .venue-info p { margin-bottom: 12px; font-size: 1rem; color: #000000; }
         .venue-info i { color: #A1223A; width: 28px; margin-right: 8px; }
         .venue-map { flex: 1.2; min-width: 200px; text-align: center; }
-        .venue-map img { width: 100%; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
-        .venue-map img:hover { transform: scale(1.02); }
-        .venue-map a { text-decoration: none; }
+        .venue-map img { width: 100%; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
         @media (max-width: 768px) { 
             .venue-box { flex-direction: column; text-align: center; } 
             .venue-info i { margin-right: 5px; } 
