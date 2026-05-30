@@ -67,7 +67,6 @@
             pointer-events: none;
         }
         
-        /* Белая рамка УБРАНА */
         .hero::before {
             content: none;
         }
@@ -144,7 +143,6 @@
             .timer-block { padding: 10px 15px; min-width: 70px; }
             .timer-number { font-size: 1.5rem; }
             .timer-label { font-size: 0.65rem; }
-            .timer-wrapper { gap: 15px; }
             
             .event-card { padding: 20px 15px; }
             .event-card h3 { font-size: 1.6rem; }
@@ -213,7 +211,9 @@
             display: flex;
             justify-content: center;
             gap: 30px;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            padding-bottom: 10px;
         }
         .timer-block {
             text-align: center;
@@ -223,6 +223,7 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.05);
             min-width: 100px;
             border: 1px solid #f0e0d8;
+            flex-shrink: 0;
         }
         .timer-number {
             font-size: 2.2rem;
@@ -276,6 +277,17 @@
             border-bottom-color: transparent;
         }
         
+        .coordinator-link {
+            color: #A1223A;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .coordinator-link:hover {
+            text-decoration: underline;
+        }
+        
         .venue-map {
             flex: 1.2;
             min-width: 200px;
@@ -316,6 +328,10 @@
         .story-centered { max-width: 800px; margin: 0 auto; text-align: center; }
         .story-centered p { margin-bottom: 20px; font-size: 1rem; color: #000000; text-align: center; }
         .story-centered .last-line { font-family: 'Raleway', sans-serif; font-style: normal; color: #000000; font-size: 1rem; margin-top: 20px; }
+        .highlight-number {
+            color: #A1223A;
+            font-weight: 700;
+        }
         .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; margin-top: 20px; }
         .event-card { background: white; border-radius: 24px; padding: 30px 20px; text-align: center; transition: all 0.3s ease; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid #f0e0d8; }
         .event-card:hover { transform: translateY(-8px); box-shadow: 0 20px 35px rgba(0,0,0,0.1); }
@@ -395,7 +411,7 @@
         <div class="story-centered" data-aos="fade-up">
             <p>Свершилось: мы решили стать семьёй!<br>И мы просто не можем сделать это по-тихому, без вас!</p>
             <p>Собираем всех самых родных на наш главный праздник. С нас - вкусная еда и ледяное игристое, с вас - хорошее настроение и готовность зажигать</p>
-            <p class="last-line">Ждем с нетерпением!</p>
+            <p class="last-line">Ждём с нетерпением <span class="highlight-number">23</span> августа!</p>
         </div>
     </div>
 </div>
@@ -414,8 +430,16 @@
                     </a>
                 </p>
                 <p>
-                    <i class="fas fa-car"></i> 
-                    <span>Есть парковка на территории, если она вам нужна</span>
+                    <i class="fas fa-parking"></i> 
+                    <span>Бесплатная парковка на территории</span>
+                </p>
+                <p>
+                    <i class="fas fa-wifi"></i> 
+                    <span>Гостевой Wi-Fi, пароль <strong>1101001001</strong></span>
+                </p>
+                <p>
+                    <i class="fas fa-phone-alt"></i> 
+                    <span>Наш координатор Виктория <a href="tel:+375291102728" class="coordinator-link">+375 29 110 27 28</a> (помощь с навигацией и при любых форс-мажорах)</span>
                 </p>
             </div>
             <div class="venue-map">
