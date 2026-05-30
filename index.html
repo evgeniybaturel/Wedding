@@ -183,78 +183,26 @@
             color: #555;
         }
         
-        /* Стили для блока "О месте проведения" */
+        /* Новые стили для блока "О месте проведения" */
         .venue-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
+            font-size: 1.8rem; /* Уменьшили размер */
             font-weight: 600;
             color: #A1223A;
             margin-bottom: 15px;
-            white-space: nowrap;
+            white-space: nowrap; /* Запрещаем перенос текста */
         }
-        
-        .venue-info p {
-            margin-bottom: 12px;
-            font-size: 1rem;
-            color: #000000;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
+        .venue-address-clickable {
+            margin-bottom: 0;
         }
-        
-        .venue-info i {
-            color: #A1223A;
-            width: 24px;
-            text-align: center;
-            flex-shrink: 0;
-        }
-        
-        .clickable a {
+        .venue-address-clickable a {
             color: #000000;
             text-decoration: none;
-            border-bottom: 1px dashed #A1223A;
+            border-bottom: 1px dashed #A1223A; /* Красивое подчеркивание */
             transition: all 0.3s ease;
         }
-        
-        .clickable a:hover {
+        .venue-address-clickable a:hover {
             color: #A1223A;
-            border-bottom-color: transparent;
-        }
-        
-        .venue-map {
-            flex: 1.2;
-            min-width: 200px;
-            text-align: center;
-        }
-        
-        .venue-map a {
-            text-decoration: none;
-        }
-        
-        .venue-map img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .venue-map img:hover {
-            transform: scale(1.02);
-        }
-        
-        .map-link {
-            margin-top: 8px;
-        }
-        
-        .map-link a {
-            font-size: 0.7rem;
-            color: #A1223A;
-            text-decoration: none;
-            border-bottom: 1px dashed #A1223A;
-        }
-        
-        .map-link a:hover {
             border-bottom-color: transparent;
         }
         
@@ -300,14 +248,11 @@
             .timer-label { font-size: 0.65rem; }
             .timer-wrapper { gap: 15px; }
             
+            /* Мобильная адаптация для заголовка усадьбы */
             .venue-title {
                 font-size: 1.4rem;
-                white-space: normal;
-                text-align: center;
+                white-space: normal; /* На телефонах перенос все же разрешим, если не влезает */
             }
-            
-            .venue-box { flex-direction: column; text-align: center; }
-            .venue-info p { justify-content: flex-start; text-align: left; }
             
             .event-card { padding: 20px 15px; }
             .event-card h3 { font-size: 1.6rem; }
@@ -315,6 +260,7 @@
             .event-time { font-size: 0.9rem; }
             .event-address { font-size: 0.75rem; }
             .venue-box { padding: 25px; gap: 20px; }
+            .venue-info h3 { font-size: 1.6rem; }
             .venue-info p { font-size: 0.9rem; }
             .venue-map img { border-radius: 15px; }
             .rsvp-box { padding: 25px; }
@@ -363,7 +309,10 @@
             .event-card h3 { font-size: 1.3rem; }
             .event-icon { font-size: 1.6rem; }
             .event-time { font-size: 0.8rem; }
-            .venue-title { font-size: 1.2rem; }
+            .venue-title {
+                font-size: 1.2rem;
+            }
+            .venue-info h3 { font-size: 1.4rem; }
             .venue-info p { font-size: 0.8rem; }
             .radio-option span, .checkbox-option span { font-size: 0.7rem; }
             .radio-group, .checkbox-group { gap: 8px; }
@@ -387,6 +336,16 @@
         .event-address { font-size: 0.85rem; color: #666; }
         .venue-box { background: white; border-radius: 30px; padding: 40px; margin-top: 30px; display: flex; flex-wrap: wrap; gap: 30px; align-items: center; box-shadow: 0 15px 35px rgba(0,0,0,0.05); border: 1px solid #f0e0d8; }
         .venue-info { flex: 2; }
+        .venue-info p { margin-bottom: 12px; font-size: 1rem; color: #000000; }
+        .venue-info i { color: #A1223A; width: 28px; margin-right: 8px; }
+        .venue-map { flex: 1.2; min-width: 200px; text-align: center; }
+        .venue-map img { width: 100%; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
+        .venue-map img:hover { transform: scale(1.02); }
+        .venue-map a { text-decoration: none; }
+        @media (max-width: 768px) { 
+            .venue-box { flex-direction: column; text-align: center; } 
+            .venue-info i { margin-right: 5px; } 
+        }
         .rsvp-box { background: white; border-radius: 30px; padding: 45px; max-width: 700px; margin: 0 auto; box-shadow: 0 20px 40px rgba(0,0,0,0.05); border: 1px solid #f0e0d8; }
         .form-group { margin-bottom: 25px; }
         .form-label { font-family: 'Raleway', sans-serif; font-size: 1rem; font-weight: 500; color: #000000; margin-bottom: 8px; display: block; }
@@ -455,7 +414,7 @@
     </div>
 </div>
 
-<!-- О месте проведения -->
+<!-- О месте проведения (обновлено с парковкой) -->
 <div class="section" style="background: #FFFFFF;">
     <div class="container">
         <h2 class="section-title" data-aos="fade-up">Место встречи</h2>
@@ -463,23 +422,20 @@
         <div class="venue-box" data-aos="fade-up">
             <div class="venue-info">
                 <h3 class="venue-title">Усадьба «Tarasovo Village»</h3>
-                <p class="clickable">
+                <p class="venue-address-clickable">
                     <i class="fas fa-map-marker-alt"></i> 
                     <a href="https://yandex.ru/navi/org/usadba_tarasovo_village/180449201850?si=cd6kcu057jvctzk0abyj7w9a5w" target="_blank" rel="noopener noreferrer">
                         Минская область, д. Тарасово, Олимпийская ул., 3
                     </a>
                 </p>
-                <p>
-                    <i class="fas fa-car"></i> 
-                    <span>Есть парковка на территории, если она вам нужна</span>
-                </p>
+                <p><i class="fas fa-car"></i> Есть парковка на территории, если она вам нужна</p>
             </div>
             <div class="venue-map">
                 <a href="https://yandex.ru/navi/org/usadba_tarasovo_village/180449201850?si=cd6kcu057jvctzk0abyj7w9a5w" target="_blank" rel="noopener noreferrer">
                     <img src="images/image-1.jpg" alt="Усадьба Tarasovo Village">
                 </a>
-                <p class="map-link">
-                    <a href="https://yandex.ru/navi/org/usadba_tarasovo_village/180449201850?si=cd6kcu057jvctzk0abyj7w9a5w" target="_blank" rel="noopener noreferrer">
+                <p style="font-size: 0.7rem; text-align: center; margin-top: 8px;">
+                    <a href="https://yandex.ru/navi/org/usadba_tarasovo_village/180449201850?si=cd6kcu057jvctzk0abyj7w9a5w" target="_blank" rel="noopener noreferrer" style="color: #A1223A;">
                         Открыть в Яндекс.Навигаторе
                     </a>
                 </p>
