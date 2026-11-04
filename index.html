@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Приглашение на свадьбу</title>
+<meta name="description" content="Приглашаем вас на нашу свадьбу">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f7f4ef;
+    --ink:#2f2b26;
+    --muted:#7d756a;
+    --accent:#9a7b4f;
+    --line:#ddd4c6;
+    --card:#fffdfa;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:'Jost',system-ui,sans-serif;font-weight:300;
+    line-height:1.65;-webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;letter-spacing:.02em}
+  section{padding:76px 20px;max-width:760px;margin:0 auto}
+  .center{text-align:center}
+  .eyebrow{
+    text-transform:uppercase;letter-spacing:.32em;font-size:12px;color:var(--muted);
+  }
+  h2{font-size:34px;margin:10px 0 26px}
+  p{margin:0 0 16px}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:40px 20px;position:relative;
+    background:
+      linear-gradient(180deg,rgba(247,244,239,.55),rgba(247,244,239,.92)),
+      var(--hero-img) center/cover no-repeat;
+  }
+  .hero .names{font-size:clamp(46px,13vw,104px);line-height:1.02;margin:18px 0 10px}
+  .hero .amp{display:block;font-style:italic;font-size:.45em;color:var(--accent);margin:6px 0}
+  .hero .date{letter-spacing:.3em;text-transform:uppercase;font-size:14px;color:var(--muted)}
+  .rule{width:64px;height:1px;background:var(--accent);margin:26px auto;opacity:.7}
+  .scroll{position:absolute;bottom:26px;font-size:11px;letter-spacing:.25em;color:var(--muted);text-transform:uppercase}
+  .scroll::after{content:"";display:block;width:1px;height:34px;background:var(--line);margin:10px auto 0;animation:drop 1.8s infinite}
+  @keyframes drop{0%,100%{opacity:.3;transform:scaleY(.5)}50%{opacity:1;transform:scaleY(1)}}
+
+  /* ---------- COUNTDOWN ---------- */
+  .countdown{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+  .cd-cell{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:16px 10px;min-width:92px;
+  }
+  .cd-num{font-family:'Cormorant Garamond',serif;font-size:40px;line-height:1;color:var(--accent)}
+  .cd-lbl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+
+  /* ---------- TIMELINE ---------- */
+  .timeline{list-style:none;padding:0;margin:0;position:relative}
+  .timeline::before{content:"";position:absolute;left:11px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .timeline li{position:relative;padding:0 0 28px 44px}
+  .timeline li::before{
+    content:"";position:absolute;left:5px;top:8px;width:13px;height:13px;border-radius:50%;
+    background:var(--bg);border:1px solid var(--accent);
+  }
+  .t-time{color:var(--accent);font-family:'Cormorant Garamond',serif;font-size:24px;line-height:1.2}
+  .t-title{font-size:17px}
+  .t-note{color:var(--muted);font-size:14px}
+
+  /* ---------- CARDS ---------- */
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;margin-bottom:16px;
+  }
+  .grid2{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+  @media(max-width:620px){.grid2{grid-template-columns:1fr}}
+  .btn{
+    display:inline-block;border:1px solid var(--accent);color:var(--accent);
+    padding:12px 26px;border-radius:999px;text-decoration:none;font-size:13px;
+    letter-spacing:.18em;text-transform:uppercase;background:transparent;cursor:pointer;
+    transition:.25s;font-family:'Jost',sans-serif;
+  }
+  .btn:hover{background:var(--accent);color:#fff}
+  .btn-solid{background:var(--accent);color:#fff}
+  .btn-solid:hover{background:#80653f;border-color:#80653f}
+
+  /* ---------- DRESS CODE ---------- */
+  .palette{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+  .sw{width:56px;height:56px;border-radius:50%;border:1px solid rgba(0,0,0,.08)}
+
+  /* ---------- FORM ---------- */
+  form{display:grid;gap:14px;text-align:left}
+  label{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  input,select,textarea{
+    width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;
+    background:#fff;font-family:inherit;font-size:16px;color:var(--ink);
+  }
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent)}
+  .radio-row{display:flex;gap:18px;flex-wrap:wrap}
+  .radio-row label{display:flex;align-items:center;gap:8px;text-transform:none;letter-spacing:0;font-size:16px;color:var(--ink)}
+  .radio-row input{width:auto}
+  .msg{display:none;text-align:center;padding:18px;border:1px dashed var(--accent);border-radius:12px;color:var(--accent)}
+
+  footer{padding:50px 20px 60px;text-align:center;color:var(--muted);font-size:13px;letter-spacing:.1em}
+  footer .heart{color:var(--accent);font-size:20px;display:block;margin-bottom:10px}
+
+  /* ---------- ANIMATION ---------- */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+  .reveal.visible{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<!-- ============ ОБЛОЖКА ============ -->
+<header class="hero" id="top">
+  <div class="eyebrow" id="hero-eyebrow">Мы женимся</div>
+  <h1 class="names"><span id="name1">Евгений</span><span class="amp serif">&amp;</span><span id="name2">Анна</span></h1>
+  <div class="rule"></div>
+  <div class="date" id="hero-date"></div>
+  <div class="scroll">Листайте вниз</div>
+</header>
+
+<!-- ============ ПРИГЛАШЕНИЕ ============ -->
+<section class="center reveal">
+  <div class="eyebrow">Дорогие друзья и родные</div>
+  <h2>Приглашаем вас<br>разделить с нами этот день</h2>
+  <p id="invite-text"></p>
+</section>
+
+<!-- ============ ТАЙМЕР ============ -->
+<section class="center reveal">
+  <div class="eyebrow">До торжества осталось</div>
+  <div class="rule"></div>
+  <div class="countdown" id="countdown"></div>
+</section>
+
+<!-- ============ ПРОГРАММА ============ -->
+<section class="reveal">
+  <div class="center"><div class="eyebrow">План дня</div><h2>Программа</h2></div>
+  <ul class="timeline" id="timeline"></ul>
+</section>
+
+<!-- ============ МЕСТО ============ -->
+<section class="center reveal">
+  <div class="eyebrow">Где нас найти</div>
+  <h2 id="venue-name"></h2>
+  <p id="venue-address"></p>
+  <p id="venue-note" class="t-note"></p>
+  <p>
+    <a class="btn" id="map-link" target="_blank" rel="noopener">Открыть карту</a>
+    <a class="btn" id="cal-link" download="wedding.ics">В календарь</a>
+  </p>
+</section>
+
+<!-- ============ ДРЕСС-КОД И ДЕТАЛИ ============ -->
+<section class="reveal">
+  <div class="grid2">
+    <div class="card center">
+      <div class="eyebrow">Дресс-код</div>
+      <h2 style="font-size:26px;margin:8px 0 6px">Нарядно и в тон</h2>
+      <p class="t-note" id="dress-note"></p>
+      <div class="palette" id="palette"></div>
+    </div>
+    <div class="card center">
+      <div class="eyebrow">Пожелания</div>
+      <h2 style="font-size:26px;margin:8px 0 6px">Несколько просьб</h2>
+      <p class="t-note" id="wishes"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RSVP ============ -->
+<section class="reveal" id="rsvp">
+  <div class="center"><div class="eyebrow">Подтверждение</div><h2>Будете ли вы с нами?</h2>
+  <p class="t-note" id="rsvp-deadline"></p></div>
+  <div class="card">
+    <form id="rsvp-form">
+      <div>
+        <label for="guest">Ваше имя и фамилия</label>
+        <input id="guest" name="guest" required autocomplete="name" placeholder="Иван Иванов">
+      </div>
+      <div>
+        <label>Придёте?</label>
+        <div class="radio-row">
+          <label><input type="radio" name="attend" value="Приду" checked> Обязательно приду</label>
+          <label><input type="radio" name="attend" value="Не смогу"> К сожалению, не смогу</label>
+        </div>
+      </div>
+      <div>
+        <label for="persons">Количество гостей</label>
+        <select id="persons" name="persons">
+          <option>1</option><option>2</option><option>3</option><option>4</option>
+        </select>
+      </div>
+      <div>
+        <label for="drinks">Предпочтения по напиткам / еде</label>
+        <input id="drinks" name="drinks" placeholder="Вино, без мяса и т.п.">
+      </div>
+      <div>
+        <label for="note">Пожелание молодожёнам</label>
+        <textarea id="note" name="note" rows="3"></textarea>
+      </div>
+      <div class="center"><button class="btn btn-solid" type="submit">Отправить ответ</button></div>
+    </form>
+    <div class="msg" id="rsvp-ok">Спасибо! Мы получили ваш ответ и очень ждём встречи.</div>
+  </div>
+  <p class="center t-note" id="contacts"></p>
+</section>
+
+<footer>
+  <span class="heart">&#10084;</span>
+  <span id="footer-text"></span>
+</footer>
+
+<script>
+/* =======================================================================
+   НАСТРОЙКИ — меняйте только этот блок
+   ======================================================================= */
+const CONFIG = {
+  // Имена жениха и невесты
+  name1: "Евгений",
+  name2: "Анна",
+
+  // Дата и время начала (год, месяц-1, день, часы, минуты)
+  // ВНИМАНИЕ: месяц считается с нуля! Январь = 0, август = 7
+  date: new Date(2027, 7, 14, 15, 0),
+  dateText: "14 августа 2027 · суббота",
+  durationHours: 8,            // длительность для файла календаря
+
+  // Фото-обложка: вставьте ссылку на картинку или положите рядом photo.jpg
+  heroImage: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80",
+
+  inviteText: "С большой радостью приглашаем вас на свадьбу, которая состоится 14 августа 2027 года. Будем счастливы видеть вас среди самых близких людей в этот важный для нас день.",
+
+  // Программа дня
+  timeline: [
+    { time: "15:00", title: "Сбор гостей",      note: "Welcome-напитки и фотографии" },
+    { time: "16:00", title: "Церемония",        note: "Просим не опаздывать" },
+    { time: "17:00", title: "Праздничный ужин", note: "" },
+    { time: "20:00", title: "Первый танец и торт", note: "" },
+    { time: "23:00", title: "Завершение вечера", note: "Трансфер в город" }
+  ],
+
+  // Место проведения
+  venueName: "Усадьба «Дукорскі маёнтак»",
+  venueAddress: "аг. Дукора, Пуховичский район, Минская область",
+  venueNote: "Парковка на территории. Для гостей из города будет организован трансфер от ст. м. «Автозаводская» в 14:00.",
+  mapUrl: "https://yandex.by/maps/?text=Дукорскі маёнтак",
+
+  // Дресс-код
+  dressNote: "Поддержите палитру нашего дня — пастельные и natural-оттенки. Просим воздержаться от белого цвета.",
+  palette: ["#e7ded0", "#c9b89c", "#9a7b4f", "#6d7a63", "#2f2b26"],
+
+  wishes: "Вместо цветов будем рады бутылке хорошего вина для нашей домашней коллекции. Самый желанный подарок — ваше присутствие и хорошее настроение.",
+
+  // RSVP
+  rsvpDeadline: "Пожалуйста, ответьте до 1 июля 2027 года",
+  // Куда приходят ответы: "mailto" — письмо на почту, "form" — ваш Google-форма/Formspree endpoint
+  rsvpMode: "mailto",
+  rsvpEmail: "evgeniybaturel@gmail.com",
+  rsvpEndpoint: "",            // напр. https://formspree.io/f/xxxxxxx  (тогда rsvpMode: "form")
+
+  contacts: "Вопросы: Евгений +375 (__) ___-__-__ · Анна +375 (__) ___-__-__",
+  footerText: "Ждём вас 14 августа 2027"
+};
+/* ================== НИЖЕ МЕНЯТЬ НЕ НУЖНО ============================== */
+
+const $ = (s) => document.querySelector(s);
+
+/* --- подстановка текстов --- */
+document.title = CONFIG.name1 + " & " + CONFIG.name2 + " — приглашение на свадьбу";
+document.documentElement.style.setProperty("--hero-img", "url('" + CONFIG.heroImage + "')");
+$("#name1").textContent = CONFIG.name1;
+$("#name2").textContent = CONFIG.name2;
+$("#hero-date").textContent = CONFIG.dateText;
+$("#invite-text").textContent = CONFIG.inviteText;
+$("#venue-name").textContent = CONFIG.venueName;
+$("#venue-address").textContent = CONFIG.venueAddress;
+$("#venue-note").textContent = CONFIG.venueNote;
+$("#map-link").href = CONFIG.mapUrl;
+$("#dress-note").textContent = CONFIG.dressNote;
+$("#wishes").textContent = CONFIG.wishes;
+$("#rsvp-deadline").textContent = CONFIG.rsvpDeadline;
+$("#contacts").textContent = CONFIG.contacts;
+$("#footer-text").textContent = CONFIG.footerText;
+
+/* --- программа --- */
+$("#timeline").innerHTML = CONFIG.timeline.map(function (i) {
+  return '<li><div class="t-time">' + i.time + '</div>' +
+         '<div class="t-title">' + i.title + '</div>' +
+         (i.note ? '<div class="t-note">' + i.note + '</div>' : '') + '</li>';
+}).join("");
+
+/* --- палитра дресс-кода --- */
+$("#palette").innerHTML = CONFIG.palette.map(function (c) {
+  return '<span class="sw" style="background:' + c + '"></span>';
+}).join("");
+
+/* --- обратный отсчёт --- */
+function plural(n, forms) {           // [день, дня, дней]
+  var n10 = n % 10, n100 = n % 100;
+  if (n10 === 1 && n100 !== 11) return forms[0];
+  if (n10 >= 2 && n10 <= 4 && (n100 < 10 || n100 >= 20)) return forms[1];
+  return forms[2];
+}
+function tick() {
+  var diff = CONFIG.date - new Date();
+  var box = $("#countdown");
+  if (diff <= 0) { box.innerHTML = '<div class="cd-cell" style="min-width:auto;padding:16px 28px"><div class="cd-num">Сегодня!</div></div>'; return; }
+  var s = Math.floor(diff / 1000),
+      d = Math.floor(s / 86400),
+      h = Math.floor(s % 86400 / 3600),
+      m = Math.floor(s % 3600 / 60),
+      sec = s % 60;
+  var cells = [
+    [d, plural(d, ["день", "дня", "дней"])],
+    [h, plural(h, ["час", "часа", "часов"])],
+    [m, plural(m, ["минута", "минуты", "минут"])],
+    [sec, plural(sec, ["секунда", "секунды", "секунд"])]
+  ];
+  box.innerHTML = cells.map(function (c) {
+    return '<div class="cd-cell"><div class="cd-num">' + c[0] + '</div><div class="cd-lbl">' + c[1] + '</div></div>';
+  }).join("");
+}
+tick(); setInterval(tick, 1000);
+
+/* --- файл календаря .ics --- */
+(function () {
+  function z(n){ return (n < 10 ? "0" : "") + n; }
+  function ics(dt){
+    return dt.getUTCFullYear() + z(dt.getUTCMonth()+1) + z(dt.getUTCDate()) + "T" +
+           z(dt.getUTCHours()) + z(dt.getUTCMinutes()) + "00Z";
+  }
+  var end = new Date(CONFIG.date.getTime() + CONFIG.durationHours * 3600 * 1000);
+  var body = [
+    "BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//wedding//RU","BEGIN:VEVENT",
+    "UID:" + Date.now() + "@wedding",
+    "DTSTAMP:" + ics(new Date()),
+    "DTSTART:" + ics(CONFIG.date),
+    "DTEND:" + ics(end),
+    "SUMMARY:Свадьба " + CONFIG.name1 + " и " + CONFIG.name2,
+    "LOCATION:" + CONFIG.venueName + ", " + CONFIG.venueAddress,
+    "END:VEVENT","END:VCALENDAR"
+  ].join("\r\n");
+  $("#cal-link").href = "data:text/calendar;charset=utf-8," + encodeURIComponent(body);
+})();
+
+/* --- RSVP --- */
+$("#rsvp-form").addEventListener("submit", function (e) {
+  e.preventDefault();
+  var f = e.target;
+  var data = {
+    guest: f.guest.value,
+    attend: f.attend.value,
+    persons: f.persons.value,
+    drinks: f.drinks.value,
+    note: f.note.value
+  };
+  function done() {
+    f.style.display = "none";
+    $("#rsvp-ok").style.display = "block";
+  }
+  if (CONFIG.rsvpMode === "form" && CONFIG.rsvpEndpoint) {
+    fetch(CONFIG.rsvpEndpoint, {
+      method: "POST",
+      headers: { "Accept": "application/json", "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    }).then(done).catch(function(){ alert("Не удалось отправить. Напишите нам, пожалуйста, сообщением."); });
+  } else {
+    var text = "Гость: " + data.guest + "\nОтвет: " + data.attend +
+               "\nКоличество: " + data.persons + "\nПредпочтения: " + data.drinks +
+               "\nПожелание: " + data.note;
+    window.location.href = "mailto:" + CONFIG.rsvpEmail +
+      "?subject=" + encodeURIComponent("RSVP: " + data.guest) +
+      "&body=" + encodeURIComponent(text);
+    done();
+  }
+});
+
+/* --- появление блоков при прокрутке --- */
+var io = new IntersectionObserver(function (entries) {
+  entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("visible"); io.unobserve(en.target); } });
+}, { threshold: 0.15 });
+document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+</script>
+</body>
+</html>
